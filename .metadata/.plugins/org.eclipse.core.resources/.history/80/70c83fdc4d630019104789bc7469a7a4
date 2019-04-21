@@ -1,0 +1,33 @@
+package com.shachar.first;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+public class TopicDatabase extends AbstractEntityDatabase<Topic>{
+
+	
+	@Override
+	protected String insertEntitySQL(Topic entity) {
+		return String.format(
+				"insert into topics "
+						+ "(name, parent_id)"
+						+ " values('%d', '%s')",
+				entity.getName(), entity.getParent_id());
+	}
+
+	@Override
+	protected Topic entityFromResultSet(ResultSet rs) throws SQLException{
+		return new Topic(rs.getInt("id"), rs.getString("name"), rs.getInt("parent_id"));
+	}
+	
+	public List<Topic> getAllPosts() {
+		return getEntitiesByQuery("Select * from posts");
+	}
+
+	@Override
+	protected Topic getDBEntity(Topic entity) {
+		return entity;
+	}
+	
+}

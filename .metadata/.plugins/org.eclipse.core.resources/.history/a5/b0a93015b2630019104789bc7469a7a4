@@ -1,0 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.shachar.first.*"%>
+<%
+	User user = 	request.getSession().removeAttribute("currentUserEmail");
+
+	request.getSession().removeAttribute("currentUserEmail");
+	request.getSession().setAttribute("validUser", "disconnected");
+	response.sendRedirect("forumBase.jsp");
+%>

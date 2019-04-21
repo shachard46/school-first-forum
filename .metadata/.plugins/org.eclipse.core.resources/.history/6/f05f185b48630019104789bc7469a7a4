@@ -1,0 +1,18 @@
+package com.shachar.first;
+
+import java.util.List;
+
+public interface IUserDatabase {
+	public User createUser(
+			String username, 
+			String password, 
+			String email, 
+			String compType, 
+			String teamNumber, 
+			String country, 
+			String teamJob, 
+			String rookieTime);
+	public User getUserById(int id);
+	public User getUserByEmail(String email);
+	List<User> getAllUsers();
+}

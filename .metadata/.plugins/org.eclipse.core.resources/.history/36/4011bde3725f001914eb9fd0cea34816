@@ -1,0 +1,166 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<html dir="rtl">
+  <head>
+    <title>FirstForum</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body class="forum">
+    <div class="menuBar">
+      <a href="oneUser.jsp"> <div class="menuBarOption user_link"></div> </a>
+
+      <div class="menuBarOption sign_up_in"><a href="register.jsp">הירשם</a></div>
+      <div class="menuBarOption sign_up_in"><a href="signIn.jsp">היכנס</a></div>
+      <div class="menuBarOption search">
+        <form>
+          <input type="text" placeholder="חפש.." name="search" />
+          <button type="submit"><img src="img/search.PNG" /></button>
+        </form>
+      </div>
+      <div class="menuBarOption in_forum"><a href="forumBase.jsp">פורום</a></div>
+      <div class="menuBarOption users_option"><a href="users.jsp">משתמשים</a></div>
+      <div class="first-logo">
+        <div class="menuBarOption">
+          <a href="https://www.firstisrael.org.il/"
+            ><img src="img/FIRSTWordMark_Black.gif" class="first-logo-img"
+          /></a>
+        </div>
+      </div>
+    </div>
+    <div class="big_container">
+      <table class="container">
+        <!-- FIRST theme -->
+        <tr>
+          <td colspan="3" class="header">פירסט</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">פורום כללי</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">פינת השמועות</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">חשיפת הרובוטים</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <!-- tecnical theme -->
+        <tr>
+          <td colspan="3" class="header">טכני</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">מכניקה</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">ציוד</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">חשמל</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">מנועים</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">תכנות</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">חיישנים</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">פנאומטיקה</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">שרטוט</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.jsp">מדיה</a></td>
+          <td class="last_post"><a href="forumPost.jsp">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <!-- compatition theme -->
+        <tr>
+          <td colspan="3" class="header">תחרות</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.html">פרסים</a></td>
+          <td class="last_post"><a href="forumPost.html">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.html">כללים ואסטרטגיה</a></td>
+          <td class="last_post"><a href="forumPost.html">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.html">לוגיסטיקה</a></td>
+          <td class="last_post"><a href="forumPost.html">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.html">תחריות עולמיות</a></td>
+          <td class="last_post"><a href="forumPost.html">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.html">תחרויות ארציות</a></td>
+          <td class="last_post"><a href="forumPost.html">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.html">תחרויות דיסטריקט</a></td>
+          <td class="last_post"><a href="forumPost.html">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.html">משחק הFRC החדש</a></td>
+          <td class="last_post"><a href="forumPost.html">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <!-- other -->
+        <tr>
+          <td colspan="3" class="header">אחר</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.html">FTC</a></td>
+          <td class="last_post"><a href="forumPost.html">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.html">FLL</a></td>
+          <td class="last_post"><a href="forumPost.html">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.html">רובוט בשלושה ימים</a></td>
+          <td class="last_post"><a href="forumPost.html">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+        <tr>
+          <td class="sub_topic"><a href="forumThreads.html">מה שעולה לכם בראש</a></td>
+          <td class="last_post"><a href="forumPost.html">*last post*</a></td>
+          <td class="post_amount">*posts*</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

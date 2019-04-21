@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+	<%@ page import="com.shachar.first.*"%>
+	<%
+		PostDatabase postDatabase = new PostDatabase();
+		Post post = postDatabase.createPost(
+			(String)request.getSession().getAttribute("currentEmail"), 
+			request.getParameter("postText"),
+			Integer.parseInt(request.getParameter("replayFor")),
+			request.getParameter("PostSubTopic"),
+			request.getParameter("rookieTime")
+		);
+		request.getSession().setAttribute("currentpostEmail", post.getEmail());
+		request.getSession().setAttribute("validpost", "right");
+		response.sendRedirect("forumBase.jsp");
+		
+%>

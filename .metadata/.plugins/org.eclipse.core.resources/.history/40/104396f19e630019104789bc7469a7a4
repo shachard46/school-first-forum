@@ -1,0 +1,30 @@
+package test;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class MyServlet extends HttpServlet{
+	
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
+		res.getOutputStream().println("aBc");
+		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
+	}
+	
+	public static void main(String args[]) throws Exception{
+		String s = "×¤××¡× ×¨××©××111";
+		String s2 = new String(s.getBytes("ISO8859-8"), "UTF8");
+		System.out.print(s);
+		System.out.print(s2);
+	}
+}

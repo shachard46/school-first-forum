@@ -1,0 +1,78 @@
+package com.shachar.first;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserDatabase extends AbstractEntityDatabase<User>{
+
+	
+	public void UpdatePostNumber(int posts, String email) {
+		Connection connection = getConnection();
+		Statement st = null;
+		ResultSet rs = null;
+		String sql = "update members set posts="+posts+" where email='"+email+"';";
+		try {
+			st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			rs = st.executeQuery(sql);
+		} catch (Exception e) {
+			throw new RuntimeException("Could not create statement", e);
+		}finally {
+			if(rs != null) {
+				try{
+					rs.close();
+				}catch(SQLException e) {}
+			}
+			if(st != null) {
+				try{
+					st.close();
+				}catch(SQLException e) {}
+			}
+		}
+		
+	}
+	public User getUserByUsername(String username) {
+		return getUserByQuery(String.format("select * from members where username = '%s'", username));
+	}
+	public User getUserById(int id) {
+		return getUserByQuery(String.format("select * from members where id = %s", id));
+	}
+
+	public User getUserByEmail(String email) {
+		return getUserByQuery(String.format("select * from members where email = '%s'", email));
+	}
+
+	public List<User> getAllUsers() {
+		return getUsersByQuery("Select * from members");
+	}
+	
+	private User userFromResultSet(ResultSet rs) throws SQLException{
+		return new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"),
+				rs.getString("email"), rs.getString("compType"), rs.getString("teamNumber"),
+				rs.getString("country"), rs.getString("teamJob"), rs.getString("rookieTime"));
+	}
+	@Override
+	protected User getDBEntity(User entity) {
+		return getUserByEmail(entity.getEmail());
+	}
+	@Override
+	protected String insertEntitySQL(User entity) {
+		return String.format(
+				"insert into members "
+						+ "(username, password, email, compType, teamNumber, country, teamJob, rookieTime)"
+						+ " values('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+				entity.getUsername(), entity.getPassword(), entity.getEmail(), entity.getCompType(), 
+				entity.getTeamNumber(), entity.getCountry(), entity.getTeamJob(), entity.getRookieTime());
+	}
+	@Override
+	protected User entityFromResultSet(ResultSet rs) throws SQLException {
+		return new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"),
+				rs.getString("email"), rs.getString("compType"), rs.getString("teamNumber"),
+				rs.getString("country"), rs.getString("teamJob"), rs.getString("rookieTime"));
+	}
+	
+}

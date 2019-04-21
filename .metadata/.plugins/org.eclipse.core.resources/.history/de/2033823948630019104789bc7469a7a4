@@ -1,0 +1,30 @@
+INSERT into topics(name) values('פירסט');
+INSERT into topics(name) values('טכני');
+INSERT into topics(name) values('תחרות');
+INSERT into topics(name) values('אחר');
+
+
+
+INSERT into topics(name) values('פורום כללי');
+INSERT into topics(name) values('פינת השמועות');
+INSERT into topics(name) values('חשיפת הרובוטים');
+INSERT into topics(name) values('מכניקה');
+INSERT into topics(name) values('ציוד');
+INSERT into topics(name) values('חשמל');
+INSERT into topics(name) values('מנועים');
+INSERT into topics(name) values('תכנות');
+INSERT into topics(name) values('חיישנים');
+INSERT into topics(name) values('פנאומטיקה');
+INSERT into topics(name) values('שרטוט');
+INSERT into topics(name) values('מדיה');
+INSERT into topics(name) values('פרסים');
+INSERT into topics(name) values('כללים ואסטרטגיה');
+INSERT into topics(name) values('לוגיסטיקה');
+INSERT into topics(name) values('תחריות עולמיות');
+INSERT into topics(name) values('תחרויות ארציות');
+INSERT into topics(name) values('תחרויות דיסטריקט');
+INSERT into topics(name) values('משחק הFRC החדש');
+INSERT into topics(name) values('FTC');
+INSERT into topics(name) values('FLL');
+INSERT into topics(name) values('רובוט בשלושה ימים');
+INSERT into topics(name) values('מה שעולה לכם בראש');

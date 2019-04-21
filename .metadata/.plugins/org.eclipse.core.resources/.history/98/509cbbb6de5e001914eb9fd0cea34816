@@ -1,0 +1,7 @@
+package com.shachar.first;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DummyUserDatabase implements IUserDatabase{
+}

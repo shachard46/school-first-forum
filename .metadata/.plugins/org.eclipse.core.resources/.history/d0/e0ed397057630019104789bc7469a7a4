@@ -1,0 +1,15 @@
+CREATE TABLE topics (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  parent_id int(11) NULL,
+  name varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+);
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(32)  NULL,
+  `postText` varchar(1024) NULL,
+  `replayFor` int(11) NULL,
+  `postSubTopic` varchar(45) NULL,
+  PRIMARY KEY (`id`)
+)

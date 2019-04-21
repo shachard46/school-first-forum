@@ -1,0 +1,101 @@
+package com.shachar.first;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PostDatabase {
+	private Connection con;
+
+	
+	public Post createPost(int id, String email, String postText, int replayFor, String postSubTopic) throws RuntimeException {
+		Connection connection = getConnection();
+		Statement st = null; 
+		try {
+			st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			String sql = String.format(
+					"insert into posts "
+							+ "(email, postText, replayFor, postSubTopic)"
+							+ " values('%s', '%s', '%d', '%s')",
+					email, postText, replayFor, postSubTopic);
+			st.executeUpdate(sql);
+			return getPostByEmail(email);
+		} catch (Exception e) {
+			throw new RuntimeException("Could not create statement", e);
+		}finally {
+			if(st != null) {
+				try{
+					st.close();
+				}catch(SQLException e) {}
+			}
+		}
+	}
+	public Post getPostById(int id) {
+		return getPostByQuery(String.format("select * from posts where id = %s", id));
+	}
+	
+	public Post getPostByEmail(String email) {
+		return getPostByQuery(String.format("select * from posts where email = '%s'", email));
+	}
+
+	
+	public List<Post> getAllPosts() {
+		return getPostsByQuery("Select * from posts");
+	}
+	
+	private Post PostFromResultSet(ResultSet rs) throws SQLException{
+		return new Post(rs.getInt("id"), rs.getString("email"), rs.getString("postText"),
+				rs.getInt("replayFor"), rs.getString("postSubTopic"));
+	}
+	private Post getPostByQuery(String sql) throws RuntimeException{
+		List<Post> Posts = getPostsByQuery(sql);
+		if(!Posts.isEmpty()) {
+			return Posts.get(0);
+		}
+		return null; 
+	}
+	private List<Post> getPostsByQuery(String sql) throws RuntimeException{
+		Connection connection = getConnection();
+		Statement st = null;
+		ResultSet rs = null;
+		List<Post> Posts = new ArrayList<Post>();
+		try {
+			st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				Posts.add(PostFromResultSet(rs));			
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Could not create statement", e);
+		}finally {
+			if(rs != null) {
+				try{
+					rs.close();
+				}catch(SQLException e) {}
+			}
+			if(st != null) {
+				try{
+					st.close();
+				}catch(SQLException e) {}
+			}
+		}
+		return Posts;
+	}
+
+
+	private Connection getConnection() throws RuntimeException {
+		if (con == null) {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/db", "root", "");
+			} catch (Exception e) {
+				throw new RuntimeException("Could not create connection", e);
+			}
+		}
+		return con;
+	}
+}

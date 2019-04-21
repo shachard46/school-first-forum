@@ -1,0 +1,44 @@
+<%@page import="java.util.Date"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<% 
+	  		try 
+	  		{
+	  			// שלב א: טעינת המתפעל - דרייבר
+				Class.forName("com.mysql.jdbc.Driver").newInstance();	
+	  		
+	  		
+				//שלב ב:חיבור למסד הנתונים
+				Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/mydata","root","");
+				
+	  		
+				//שלב ג: יצירת עצם הסטיטמנט "שידבר" עם מסד הנתונים, כמו מזכירה של בוס
+				Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+		                						   ResultSet.CONCUR_UPDATABLE);
+				
+				// Statement st = con.createStatement(); // כאשר אין פרמטרים, אז אי אפשר לנוע למעלה - למטה בתוך הרזלטסט
+				
+				
+				//שלב ד: יצירת שאילתה עבור מסד הנתונים
+				String mySQL = "SELECT * FROM members";
+		  		
+				
+				//שלב ה: יצירת הרזלטסט - טבלה המחזיקה בתוכה חלק מ-(לפעמים את כל) מסד הנתונים
+		  		ResultSet oRS = st.executeQuery(mySQL);				
+				
+		  		//=====================סוף ההתחברות למסד הנתונים======================
+		  		
+		  		
+		  		oRS.beforeFirst();
+	  		} 	catch (Exception e) 
+	{
+	  			
+	//e.printStackTrace();
+	System.out.println("Error in connecting");
+	
+}
+%>
+<html>
+	<body>
+		Email: <%= request.getParameter("email") %>
+	</body>
+</html>

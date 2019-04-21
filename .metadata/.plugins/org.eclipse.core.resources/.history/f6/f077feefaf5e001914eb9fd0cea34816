@@ -1,0 +1,48 @@
+<%@page import="java.util.Date"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
+
+<%
+	try {
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/db", "root", "");
+		Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+
+
+
+		String mySQL = "SELECT * FROM members";
+
+
+		ResultSet oRS = st.executeQuery(mySQL);
+
+
+
+		oRS.beforeFirst();
+	} catch (Exception e) {
+
+
+		System.out.println("Error in connecting");
+
+	}
+	String[] userInfo = new String[8];
+	userInfo[1] = request.getParameter("username");
+	userInfo[2] = request.getParameter("password");
+	userInfo[3] = request.getParameter("email");
+	userInfo[4] = request.getParameter("compType");
+	userInfo[5] = request.getParameter("teamNumber");
+	userInfo[6] = request.getParameter("country");
+	userInfo[7] = request.getParameter("teamJob");
+	userInfo[8] = request.getParameter("rookieTime");
+	
+%>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+	Email:
+	<%=request.getParameter("email")%>
+</body>
+</html>

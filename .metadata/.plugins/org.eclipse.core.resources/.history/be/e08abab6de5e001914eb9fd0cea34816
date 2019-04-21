@@ -1,0 +1,15 @@
+package com.shachar.first;
+
+public class UserDatabase {
+	public void insertUser() {
+		
+	}
+	public User getUserById(int id) {
+		return null;
+	}
+	public User getUserByEmail(String email) {
+		
+	}
+	
+
+}

@@ -1,0 +1,19 @@
+<%@page import="java.util.Date"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="com.shachar.first.*"%>
+<%
+		UserDatabase userDatabase = new UserDatabase();
+		User user = userDatabase.createUser(
+			request.getParameter("username"), 
+			request.getParameter("password"),
+			request.getParameter("email"),
+			request.getParameter("compType"),
+			request.getParameter("teamNumber"),
+			request.getParameter("country"),
+			request.getParameter("teamJob"),
+			request.getParameter("rookieTime")
+		);
+		request.getSession().setAttribute("currentUser", user);
+		response.sendRedirect("forumBase.jsp");
+		
+%>

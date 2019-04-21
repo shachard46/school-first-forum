@@ -1,0 +1,80 @@
+package com.shachar.first;
+
+import java.sql.*;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.List;
+
+public class UserDatabase implements IUserDatabase {
+	private Connection con;
+
+	private Connection getConnection() throws RuntimeException {
+		if (con == null) {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/db", "root", "");
+			} catch (Exception e) {
+				throw new RuntimeException("Could not create connection", e);
+			}
+		}
+		return con;
+	}
+
+	@Override
+	public User createUser(String username, String password, String email, String compType, String teamNumber,
+			String country, String teamJob, String rookieTime) throws RuntimeException {
+		Connection connection = getConnection();
+		try {
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			String sql = String.format(
+					"insert into members "
+							+ "(username, password, email, compType, teamNumber, country, teamJob, rookieTime)"
+							+ " values('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+					username, password, email, compType, teamNumber, country, teamJob, rookieTime);
+			st.executeUpdate(sql);
+			return getUserByEmail(email);
+		} catch (Exception e) {
+			throw new RuntimeException("Could not create statement", e);
+		}
+
+	}
+
+	@Override
+	public User getUserById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		Connection connection = getConnection();
+		try {
+			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			String sql = String.format("select * from members where email = '%s'", email);
+			ResultSet rs = st.executeQuery(sql);
+			if (rs.next()) {
+				int id = rs.getInt("id");
+				String username = rs.getString("username");
+				String password = rs.getString("password");
+				String compType = rs.getString("compType");
+				String teamNumber = rs.getString("teamNumber");
+				String country = rs.getString("country");
+				String teamJob = rs.getString("teamJob");
+				String rookieTime = rs.getString("rookieTime");
+
+				return new User(id, username, password, email, compType, teamNumber, country, teamJob, rookieTime);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Could not create statement", e);
+		}
+		return null;
+
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

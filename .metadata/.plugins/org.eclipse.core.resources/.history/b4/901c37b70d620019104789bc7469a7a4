@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%@ page import="com.shachar.first.*"%>
+<%
+	PostDatabase postDatabase = new PostDatabase();
+	UserDatabase userDatabase = new UserDatabase();
+	String email = (String) request.getSession().getAttribute("currentUserEmail");
+	User user = userDatabase.getUserByEmail(email);
+	Post post = postDatabase.createPost((String) request.getSession().getAttribute("currentUserEmail"),
+			request.getParameter("postText"), Integer.parseInt("2"), "topic");
+	userDatabase.UpdatePostNumber(2, email);
+	response.sendRedirect("forumBase.jsp");
+%><!-- 
+request.getParameter("replayFor")),
+			request.getParameter("PostSubTopic") -->

@@ -1,0 +1,66 @@
+package com.shachar.first;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Post {
+	private int id;
+	private String email;
+	private String postText;
+	private int replayTo;
+	private int postTopicId;
+	private String postDate;
+	
+	Date date = new Date();
+	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	
+	public Post(String email, String postText, int replayTo, int postTopicId) {
+		this.email = email;
+		this.postText = postText;
+		this.replayTo = replayTo;
+		this.postTopicId = postTopicId;
+		postDate = formatter.format(date);
+	}
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPostText() {
+		return postText;
+	}
+	public void setPostText(String postText) {
+		this.postText = postText;
+	}
+	public int getReplayTo() {
+		return replayTo;
+	}
+	public void setReplayTo(int replayTo) {
+		this.replayTo = replayTo;
+	}
+	public int getPostTopicId() {
+		return postTopicId;
+	}
+	public void setPostTopicId(int postTopicId) {
+		this.postTopicId = postTopicId;
+	}
+
+	public String getPostDate() {
+		return postDate;
+	}
+
+	public void setPostDate() {
+		postDate = formatter.format(date);
+	}
+
+
+}

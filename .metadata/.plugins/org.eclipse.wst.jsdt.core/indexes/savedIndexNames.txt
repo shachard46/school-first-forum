@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+/Users/shachardavid/projects/eclipse-workspase/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2649479104.index
+2649479104.index
+2778471478.index
+3763428421.index
+2937336534.index
+4016506136.index
+4076056637.index
+3102489474.index
