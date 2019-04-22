@@ -22,9 +22,10 @@
 <body>
 	<div class="menuBar">
 		<%
+			String email = (String)request.getSession().getAttribute("currentUserEmail");
 			if (request.getSession().getAttribute("validUser").equals("right")) {
 		%>
-		<a href='oneUser.jsp'><div class='menuBarOption user_link'></div></a>
+		<a href='oneUser.jsp?email=<%=email%>'><div class='menuBarOption user_link'></div></a>
 		<div class='menuBarOption sign_up_in'>
 			<a href='dbLogout.jsp'>התנתק</a>
 		</div>

@@ -24,9 +24,11 @@
 <body class="forum">
 	<div class="menuBar">
 		<%
+			String email = (String) request.getSession().getAttribute("currentUserEmail");
 			if (request.getSession().getAttribute("validUser").equals("right")) {
 		%>
-		<a href='oneUser.jsp'><div class='menuBarOption user_link'></div></a>
+		<a href='oneUser.jsp?email=<%=email%>'><div
+				class='menuBarOption user_link'></div></a>
 		<div class='menuBarOption sign_up_in'>
 			<a href='dbLogout.jsp'>התנתק</a>
 		</div>
@@ -84,21 +86,22 @@
 			<tr>
 				<td colspan="3" class="header"><%=topic.getName()%></td>
 			</tr>
+
+			<%
+				if (posts != null) {
+					for (Post post : posts) {
+						User user = userDatabase.getUserByEmail(post.getEmail());
+			%>
 			<tr>
-				<%
-					if (posts != null) {
-						for (Post post : posts) {
-							User user = userDatabase.getUserByEmail(post.getEmail());
-				%>
-				<td class="sub_topic"><a
-					href="forumPost.jsp?id=<%=post.getId()%>"><%=post.getPostName()%></a></td>
+				<td class="sub_topic"><a href="forumPost.jsp?id=<%=post.getId()%>"><%=post.getPostName()%></a></td>
 				<td class="last_post"><a href="oneUser.jsp"><%=user.getUsername()%></a></td>
 				<td class="post_amount"><%=post.getPostDate()%></td>
-				<%
-					}
-					}
-				%>
 			</tr>
+			<%
+				}
+				}
+			%>
+
 		</table>
 	</div>
 </body>
