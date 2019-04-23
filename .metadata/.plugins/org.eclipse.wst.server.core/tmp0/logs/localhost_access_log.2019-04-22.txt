@@ -103,3 +103,6 @@
 0:0:0:0:0:0:0:1 - - [22/Apr/2019:18:07:22 +0300] "POST /JspProject/dbSignin.jsp HTTP/1.1" 302 -
 0:0:0:0:0:0:0:1 - - [22/Apr/2019:18:07:22 +0300] "GET /JspProject/forumBase.jsp HTTP/1.1" 200 6766
 0:0:0:0:0:0:0:1 - - [22/Apr/2019:18:07:22 +0300] "GET /JspProject/style.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Apr/2019:21:44:12 +0300] "GET /JspProject/forumBase.jsp HTTP/1.1" 200 6673
+0:0:0:0:0:0:0:1 - - [22/Apr/2019:21:44:12 +0300] "GET /JspProject/style.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Apr/2019:21:44:14 +0300] "GET /JspProject/forumPost.jsp?id=21 HTTP/1.1" 200 1776

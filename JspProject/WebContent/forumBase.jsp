@@ -2,13 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.shachar.first.*"%>
 <%@ page import="java.util.List"%>
+<%@include file="dbMembers.jsp"%>
 
 <%
-	if (request.getSession().getAttribute("validUser") == null) {
-		request.getSession().setAttribute("validUser", "disconnected");
-	}
-	TopicDatabase topicDatabase = new TopicDatabase();
-	PostDatabase postDatabase = new PostDatabase();
 	List<Topic> parentTopics = topicDatabase.getAllParentTopics();
 %>
 <html dir="rtl">
@@ -18,68 +14,11 @@
 <script type="text/javascript" src="functions.js"></script>
 </head>
 <body class="forum">
-	<div class="menuBar">
-		<%
-			String email = (String)request.getSession().getAttribute("currentUserEmail");
-			if (request.getSession().getAttribute("validUser").equals("right")) {
-		%>
-		<a href='oneUser.jsp?email=<%=email%>'><div class='menuBarOption user_link'></div></a>
-		<div class='menuBarOption sign_up_in'>
-			<a href='dbLogout.jsp'>התנתק</a>
-		</div>
+	<%@include file="header.jsp"%>
 
-		<%
-			}
-
-			else {
-		%>
-
-		<div class='menuBarOption user_link'></div>
-		<div class='menuBarOption sign_up_in'>
-			<a href='register.jsp'>הירשם</a>
-		</div>
-		<%
-			}
-		%>
-		<div class="menuBarOption sign_up_in">
-			<a href="signIn.jsp">היכנס</a>
-		</div>
-		<div class="menuBarOption users_option">
-			<a href="quiz.jsp">חידון</a>
-		</div>
-		<%
-			if (request.getSession().getAttribute("validUser").equals("right")) {
-		%>
-		<div class="menuBarOption post_option">
-			<a href="postPost.jsp">פרסם פוסט</a>
-		</div>
-
-		<%
-			}
-
-			else {
-		%>
-		<div class="menuBarOption post_option">פרסם פוסט</div>
-		<%
-			}
-		%>
-
-		<div class="menuBarOption in_forum">
-			<a href="forumBase.jsp">פורום</a>
-		</div>
-		<div class="menuBarOption users_option">
-			<a href="users.jsp">משתמשים</a>
-		</div>
-		<div class="first-logo">
-			<div class="menuBarOption">
-				<a href="https://www.firstisrael.org.il/"><img
-					src="img/FIRSTWordMark_Black.gif" class="first-logo-img" /></a>
-			</div>
-		</div>
-	</div>
 	<div class="big_container">
 		<table class="container">
-		<tr>
+			<tr>
 				<td class="sub_topic header">תת נושא</td>
 				<td class="last_post header">פוסט אחרון</td>
 				<td class="post_amount header">מספר פוסטים</td>
