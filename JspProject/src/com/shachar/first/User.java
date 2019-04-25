@@ -15,12 +15,12 @@ public class User {
 	private String teamJob;
 	private String rookieTime;
 	private String lastSeen;
-
-	Date date = new Date();
-	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	private int isAdmin;
 
 	public User(String username, String password, String email, String compType, String teamNumber, String country,
-			String teamJob, String rookieTime) {
+			String teamJob, String rookieTime, int isAdmin) {
+		Date date = new Date();
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		this.username = username;
 		this.password = password;
 		this.email = email;
@@ -30,7 +30,7 @@ public class User {
 		this.teamJob = teamJob;
 		this.rookieTime = rookieTime;
 		lastSeen = formatter.format(date);
-
+		this.isAdmin = isAdmin;
 	}
 
 	public int getId() {
@@ -106,10 +106,24 @@ public class User {
 	}
 
 	public String getLastSeen() {
+		Date date = new Date();
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		if (lastSeen.equals(formatter.format(date)))
+			return "היום";
 		return lastSeen;
 	}
 
 	public void setLastSeen() {
+		Date date = new Date();
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		lastSeen = formatter.format(date);
+	}
+
+	public int getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 }

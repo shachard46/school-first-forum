@@ -11,7 +11,8 @@
 				request.getParameter("teamNumber"),
 				request.getParameter("country"),
 				request.getParameter("teamJob"),
-				request.getParameter("rookieTime"));
+				request.getParameter("rookieTime"),
+				0);
 		userDatabase.create(user);
 		request.getSession().setAttribute("currentUserEmail", user.getEmail());
 		request.getSession().setAttribute("validUser", "right");

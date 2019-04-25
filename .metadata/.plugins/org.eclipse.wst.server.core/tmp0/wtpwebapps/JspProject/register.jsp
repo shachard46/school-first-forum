@@ -1,4 +1,6 @@
-<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 
 <html dir="rtl">
 <head>
@@ -17,7 +19,7 @@
 		<!-- <h3>הרשמה</h3> -->
 		<div class="s_r_container">
 			<form name="register" action="dbRegister.jsp"
-				onsubmit="return checkAll();" method="post">
+				onsubmit="checkAll();" method="post">
 				<label> שם משתמש</label> <input type="text" name="username"
 					placeholder="הכנס שם משתמש" /> <label>סיסמה</label> <input
 					type="password" name="password" placeholder="הכנס סיסמה" /> <label>

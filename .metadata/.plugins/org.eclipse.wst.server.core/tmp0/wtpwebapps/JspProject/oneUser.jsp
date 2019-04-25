@@ -28,7 +28,6 @@
 							קבוצה מספר
 							<%=user.getTeamNumber()%></div>
 						<div class="small_font">
-							צוות
 							<%=user.getTeamJob()%></div>
 						<div class="date">
 							נראה לאחרונה ב:

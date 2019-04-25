@@ -72,7 +72,7 @@ img.first-logo-img {
 	width: 14%;
 }
 
-hr {
+.hr {
 	width: 97%;
 }
 
@@ -265,7 +265,44 @@ input, select {
 .textareaTd {
 	padding: 40px;
 }
+input[type="radio"]{
+	width: 10% !important;
+	margin: 0px !important;
+}
+.poll_container{
+	width: 40% !important;
+}
+.poll_container label {
+	text-align: right;
+	display: block;
+	font-weight: bold;
+	padding-right: 30px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+/* .poll_container label::after {
+	content: ":";
+} */
+.poll_container td{
+	border-width: 20px !important;
+	border-radius: 35px !important;
+}
 
+.answer{
+	display:inline-flex;
+	width: 90%;
+	margin: 10px;
+}
+.answer_text{
+	margin: 5px;
+}
+.answer_result{
+	display: inline-flex;
+}
+.answer_mess{
+	margin: 6px;
+	background-color: black;
+}
 .panel_header {
 	width: 55% !important;
 	height: 45px !important;
@@ -274,7 +311,9 @@ input, select {
 	padding: 20px;
 	padding-bottom: 0px;
 }
-
+.radio_label{
+	display: inline !important;
+}
 .spacer {
 	height: 30px;
 }
@@ -349,7 +388,6 @@ input, select {
 	padding-bottom: 15px;
 	padding-top: 15px;
 }
-
 .s_r_container label::after {
 	content: ":";
 }

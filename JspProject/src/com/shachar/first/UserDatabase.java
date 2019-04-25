@@ -17,17 +17,17 @@ public class UserDatabase extends AbstractEntityDatabase<User> {
 	protected String insertEntitySQL(User entity) {
 		return String.format(
 				"insert into members "
-						+ "(username, password, email, compType, teamNumber, country, teamJob, rookieTime)"
-						+ " values('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+						+ "(username, password, email, compType, teamNumber, country, teamJob, rookieTime, is_admin)"
+						+ " values('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d)",
 				entity.getUsername(), entity.getPassword(), entity.getEmail(), entity.getCompType(),
-				entity.getTeamNumber(), entity.getCountry(), entity.getTeamJob(), entity.getRookieTime());
+				entity.getTeamNumber(), entity.getCountry(), entity.getTeamJob(), entity.getRookieTime(), entity.getIsAdmin());
 	}
 
 	@Override
 	protected User entityFromResultSet(ResultSet rs) throws SQLException {
 		User user = new User(rs.getString("username"), rs.getString("password"), rs.getString("email"),
 				rs.getString("compType"), rs.getString("teamNumber"), rs.getString("country"), rs.getString("teamJob"),
-				rs.getString("rookieTime"));
+				rs.getString("rookieTime"), rs.getInt("is_admin"));
 		user.setId(rs.getInt("id"));
 		return user;
 	}

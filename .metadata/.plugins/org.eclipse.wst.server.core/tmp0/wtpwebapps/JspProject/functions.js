@@ -24,18 +24,18 @@ function checkEmail() {
 	var email_confirm = document.register.email_confirm.value;
 	return email === email_confirm && email !== null && email.includes("@");
 }
-function checkText(fieldName) {
-	return document.register[fieldName].value !== "";
-}
-function checkPostPostText(fieldName) {
-	return document.postPost[fieldName].value !== "";
-}
+//function checkText(fieldName) {
+//	return document.register[fieldName].value !== "";
+//}
+//function checkPostPostText(fieldName) {
+//	return document.postPost[fieldName].value !== "";
+//}
 function checkAll() {
 	return (checkEmail() && checkPassword() && checkUsername()
 			&& checkSelect("compType") && checkSelect("country")
 			&& checkText("teamNumber") && checkText("teamJob"));
 }
-function checkPostPost() {
-//	return (checkPostPostText("postName") && checkPostPostText("postText"));
-	return (document.postPost["postName"].value !== "" && document.postPost["postText"].value !== "");
-}
+//function checkPostPost() {
+////	return (checkPostPostText("postName") && checkPostPostText("postText"));
+//	return (document.postPost["postName"].value !== "" && document.postPost["postText"].value !== "");
+//}

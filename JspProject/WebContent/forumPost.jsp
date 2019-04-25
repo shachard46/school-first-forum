@@ -44,7 +44,7 @@
 			<tr>
 				<td>
 					<div class="post_name"><%=post.getPostName()%></div>
-					<hr />
+					<hr class="hr"/>
 					<div class="post"><%=post.getPostText()%></div>
 				</td>
 			</tr>

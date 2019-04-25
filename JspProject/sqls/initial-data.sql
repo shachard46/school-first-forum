@@ -26,3 +26,13 @@ INSERT into topics(name, parent_id) select 'FTC', id from topics where name = '�
 INSERT into topics(name, parent_id) select 'FLL', id from topics where name = 'אחר';
 INSERT into topics(name, parent_id) select 'רובוט בשלושה ימים', id from topics where name = 'אחר';
 INSERT into topics(name, parent_id) select 'מה שעולה לכם בראש', id from topics where name = 'אחר';
+
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('מיהי הקבוצה הקנדית האהובה עליך?', '1114', '2056', '1241', '3683');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');

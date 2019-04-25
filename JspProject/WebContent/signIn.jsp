@@ -15,12 +15,20 @@
 				<%
 					if (request.getSession().getAttribute("validUser").equals("right")
 							|| request.getSession().getAttribute("validUser").equals("disconnected")) {
-						out.print(
-								"\r<label> שם משתמש</label> <input type='text' name='username' placeholder='הכנס שם משתמש'/><label>סיסמה</label> <input type='password' name='password' placeholder='הכנס סיסמה'>");
+				%>
+					<label> שם משתמש</label> 
+					<input type='text' name='username' placeholder='הכנס שם משתמש' />
+					<label>סיסמה</label>
+					<input type='password' name='password' placeholder='הכנס סיסמה'/>
 
+				<%
 					} else {
-						out.print(
-								"\r<label> שם משתמש - משתמש לא קיים</label> <input type='text' class='wrong' name='username' placeholder='הכנס שם משתמש' /><label>סיסמה - משתמש לא קיים</label> <input type='password' class='wrong' name='password' placeholder='הכנס סיסמה' />");
+				%>
+					<label> שם משתמש - שם משתמש או סיסמא שגויים</label> 
+					<input type='text' class='wrong' name='username' placeholder='הכנס שם משתמש' />
+					<label>סיסמה - שם משתמש או	סיסמא שגויים</label> 
+					<input type='password' class='wrong' name='password' placeholder='הכנס סיסמה' />
+				<%
 					}
 				%>
 				<input type="submit" value="היכנס" class="button send-button" /> <span

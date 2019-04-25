@@ -18,7 +18,10 @@ public class TopicDatabase extends AbstractEntityDatabase<Topic> {
 
 	@Override
 	protected Topic entityFromResultSet(ResultSet rs) throws SQLException {
-		return new Topic(rs.getInt("id"), rs.getString("name"), rs.getInt("parent_id"));
+		Topic topic = new Topic(rs.getInt("id"), rs.getString("name"), rs.getInt("parent_id"));
+		topic.setId(rs.getInt("id"));
+		return topic;
+
 	}
 
 	@Override
