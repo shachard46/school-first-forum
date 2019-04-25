@@ -1,0 +1,32 @@
+package com.shachar.first;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class PollAnswerDatabase extends AbstractEntityDatabase<PollAnswer>{
+
+	@Override
+	protected String getEntityTableName() {
+		return "poll_answers";
+	}
+
+	@Override
+	protected PollAnswer getDBEntity(PollAnswer entity) {
+		return entity;
+	}
+
+	@Override
+	protected String insertEntitySQL(PollAnswer entity) {
+		return String.format("insert into poll_answers " + "(name, ans_1, ans_2, ans_3, ans_4)"
+				+ " values('%s', '%s', '%s', '%s')",
+		entity.getName(), entity.getAns1(), entity.getAns2(), entity.getAns3(), entity.getAns4());
+	}
+
+	@Override
+	protected PollAnswer entityFromResultSet(ResultSet rs) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+}
