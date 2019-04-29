@@ -1,5 +1,9 @@
 package com.shachar.first;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class PollQuestion {
 	private int id;
 	private String name;
@@ -40,6 +44,10 @@ public class PollQuestion {
 	public void setAns4(String ans4) {
 		this.ans4 = ans4;
 	}
+	public List<String> getAllAnswers(){
+		return Arrays.asList(ans1, ans2, ans3, ans4);
+	}
+	
 	public String getName() {
 		return name;
 	}

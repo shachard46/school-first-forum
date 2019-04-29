@@ -1,0 +1,9 @@
+package com.shachar.first;
+
+import java.text.DecimalFormat;
+
+public class Utils {
+	public double decimalFormat(double num) {
+		DecimalFormat dc = new DecimalFormat();
+	}
+}

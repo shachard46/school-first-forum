@@ -80,6 +80,23 @@ public abstract class AbstractEntityDatabase<EntityType> {
 			}
 		}
 	}
+	public void clearTable() {
+		Connection connection = getConnection();
+		Statement st = null; 
+		try {
+			st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			String sql = String.format("delete from %s", getEntityTableName());
+			st.executeUpdate(sql);
+		} catch (Exception e) {
+			throw new RuntimeException("Could not create statement", e);
+		}finally {
+			if(st != null) {
+				try{
+					st.close();
+				}catch(SQLException e) {}
+			}
+		}
+	}
 	public EntityType getEntityById(int id) {
 		String sql = String.format("select * from %s where id = %s", getEntityTableName(), id);
 		return getSingleEntityByQuery(sql);
@@ -95,6 +112,7 @@ public abstract class AbstractEntityDatabase<EntityType> {
 	abstract protected String insertEntitySQL(EntityType entity);
 	
 	abstract protected EntityType entityFromResultSet(ResultSet rs) throws SQLException;
+
 	
 	protected List<EntityType> getEntitiesByQuery(String sql) throws RuntimeException{
 		Connection connection = getConnection();
@@ -123,6 +141,7 @@ public abstract class AbstractEntityDatabase<EntityType> {
 		}
 		return entities;
 	}
+	
 	private String updateEntityFieldSQL(String field, String unique,String uniqueValue, String value) {
 		return String.format("update %s set %s='%s' where %s='%s'",getEntityTableName(), field, value, unique, uniqueValue);
 	}
@@ -140,7 +159,7 @@ public abstract class AbstractEntityDatabase<EntityType> {
 		return String.format("update %s set %s=%d where %s='%s'",getEntityTableName(), field, value, unique, uniqueValue);
 	}
 
-	protected Connection getConnection() throws RuntimeException {
+	protected Connection getConnection() {
 		if (con == null) {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");

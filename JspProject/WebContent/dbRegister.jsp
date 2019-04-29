@@ -16,6 +16,7 @@
 		userDatabase.create(user);
 		request.getSession().setAttribute("currentUserEmail", user.getEmail());
 		request.getSession().setAttribute("validUser", "right");
+		request.getSession().setAttribute("poll_results", "false");
 		response.sendRedirect("forumBase.jsp");
 		
 %>

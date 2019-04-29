@@ -2,18 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@include file="dbMembers.jsp"%>
 
-<!DOCTYPE html>
 <%
 	List<PollQuestion> pollQuestions = pollQuestionDatabase.getAllEntities();
 	for(PollQuestion pollQuestion : pollQuestions){
 		String name = pollQuestion.getName();
 		int id = pollQuestion.getId();
 
-		String ans = request.getParameter(id+"");
+		String ans = request.getParameter(String.valueOf(id));
 		PollAnswer pollAnswer = new PollAnswer(name, ans);
 		out.print(ans);
  		pollAnswerDatabase.create(pollAnswer); 
 	}
 	request.getSession().setAttribute("poll_results", "true");
-	 response.sendRedirect("poll.jsp");
+	response.sendRedirect("poll.jsp");
 %>

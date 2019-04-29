@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="static com.shachar.first.Utils.*"%>
+<%@page import="java.util.Map"%>
 <%@include file="dbMembers.jsp"%>
 <%
 	List<PollQuestion> pollQuestions = pollQuestionDatabase.getAllEntities();
@@ -14,8 +16,7 @@
 </head>
 <body>
 	<%@include file="header.jsp"%>
-	<form action="dbPollAnswers.jsp" method="get">
-
+	<form action="dbPollAnswers.jsp" method="GET" accept-charset="UTF-8">
 		<table class="container poll_container">
 			<%
 				for (PollQuestion pollQuestion : pollQuestions) {
@@ -26,53 +27,47 @@
 				<%
 					if (request.getSession().getAttribute("poll_results").equals("false")) {
 				%>
-				<td><label><%=name%></label> <span class="answer"><input
-						type="radio" name="<%=id%>" value="<%=pollQuestion.getAns1()%>"><span
-						class="answer_text"> <%=pollQuestion.getAns1()%></span></span> <span
-					class="answer"><input type="radio" name="<%=id%>"
-						value="<%=pollQuestion.getAns2()%>"><span
-						class="answer_text"> <%=pollQuestion.getAns2()%></span></span> <span
-					class="answer"><input type="radio" name="<%=id%>"
-						value="<%=pollQuestion.getAns3()%>"><span
-						class="answer_text"> <%=pollQuestion.getAns3()%></span></span> <span
-					class="answer"><input type="radio" name="<%=id%>"
-						value="<%=pollQuestion.getAns4()%>"><span
-						class="answer_text"> <%=pollQuestion.getAns4()%></span></span></td>
+				<td><label><%=name%></label>
+				 <%
+ 					for (String answer : pollQuestion.getAllAnswers()) {
+				%>
+					  <span class="answer"><input type="radio"
+						name="<%=id%>" value="<%=answer%>"><span
+						class="answer_text"> <%=answer%></span></span> <%
+					}
+				 %></td>
 				<%
 					} else {
+							Map<String, Integer> answersCount = pollAnswerDatabase.getAnswerCounts(name);
+							int ansSum = sum(answersCount.values());
 				%>
-				<td><label><%=name%></label>
-					<div class="answer"><%=pollQuestion.getAns1()%>
-						<hr class="answer_mess"
-							width=<%=(pollAnswerDatabase.pollAnswerCount(pollQuestion.getAns1()) * 20)%>>
-					</div>
-
-					<div class="answer">
-						<%=pollQuestion.getAns2()%>
-						<hr class="answer_mess"
-							width=<%=(pollAnswerDatabase.pollAnswerCount(pollQuestion.getAns2()) * 20)%>>
-					</div>
-
-					<div class="answer"><%=pollQuestion.getAns3()%>
-						<hr class="answer_mess"
-							width=<%=(pollAnswerDatabase.pollAnswerCount(pollQuestion.getAns3()) * 20)%>>
-					</div>
-
-					<div class="answer"><%=pollQuestion.getAns4()%>
-						<hr class="answer_mess"
-							width=<%=(pollAnswerDatabase.pollAnswerCount(pollQuestion.getAns4()) * 20)%>>
-					</div></td>
-				<%
-					}
-				%>
+				<td><label><%=name%></label> <%
+ 	for (String answer : pollQuestion.getAllAnswers()) {
+ 				Integer ansCount = answersCount.get(answer);
+ 				double ratio = 0;
+ 				if (ansCount != null) {
+ 					ratio = (double) ansCount / ansSum;
+ 				}
+ %>
+					<div class="answer"><%=answer%>
+						<hr class="answer_mess" width=<%=270 * ratio%>><%=formatNumber(ratio * 100)%>%
+					</div> <%
+ 	}
+ 		}
+ %>
 			</tr>
 			<%
 				}
+				if (request.getSession().getAttribute("poll_results").equals("false")) {
 			%>
+
 			<tr>
 				<td><input type="submit" value="שלח" class="post_button">
 				</td>
 			</tr>
+			<%
+				}
+			%>
 		</table>
 
 	</form>

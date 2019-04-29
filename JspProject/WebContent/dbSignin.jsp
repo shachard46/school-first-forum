@@ -3,7 +3,7 @@
 <%@ page import="com.shachar.first.*"%>
 <%
 	UserDatabase userDatabase = new UserDatabase();
-
+	request.getSession().setMaxInactiveInterval(36000000);
 	if (userDatabase.getUserByUsername((String) request.getParameter("username")) != null) {
 		User user = userDatabase.getUserByUsername((String) request.getParameter("username"));
 		out.println((String) request.getParameter("username"));
@@ -13,6 +13,7 @@
 			request.getSession().removeAttribute("currentUserEmail");
 			request.getSession().setAttribute("currentUserEmail", user.getEmail());
 			request.getSession().setAttribute("validUser", "right");
+			request.getSession().setAttribute("poll_results", "false");
 			response.sendRedirect("forumBase.jsp");
 		} else {
 			request.getSession().setAttribute("validUser", "wrong");
@@ -22,4 +23,5 @@
 		request.getSession().setAttribute("validUser", "wrong");
 		response.sendRedirect("signIn.jsp");
 	}
+	
 %>
