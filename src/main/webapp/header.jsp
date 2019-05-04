@@ -16,8 +16,7 @@
 		if (request.getSession().getAttribute("validUser").equals("right")
 				&& userDatabase2.getUserByEmail(email).getIsAdmin() == 0) {
 	%>
-	<a href='oneUser.jsp?email=<%=email%>'><div
-			class='menuBarOption user_link'></div></a>
+	<a href='oneUser.jsp?email=<%=email%>' class='menuBarOption user_link'></a>
 	<div class='menuBarOption sign_up_in'>
 		<a href='dbLogout.jsp'>התנתק</a>
 	</div>
