@@ -5,3 +5,5 @@ Servers
 .DS_Store
 .project
 build
+target
+.idea
