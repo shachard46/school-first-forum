@@ -1,7 +1,7 @@
 CREATE TABLE topics (
   id int(11) NOT NULL AUTO_INCREMENT,
   parent_id int(11) NULL,
-  name varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
 );
@@ -16,19 +16,37 @@ CREATE TABLE posts (
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `members` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(32),
+
+CREATE TABLE members (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  username varchar(32),
   `password` varchar(32),
-  `email` varchar(64),
-  `compType` varchar(8),
-  `teamNumber` varchar(8),
-  `country` varchar(32),
-  `teamJob` varchar(32),
-  `rookieTime` varchar(16),
-  `last_seen` datetime,
-  `is_admin` int(11) NOT NULL,
+  email varchar(64),
+  compType varchar(8),
+  teamNumber varchar(8),
+  country varchar(32),
+  teamJob varchar(32),
+  rookieTime varchar(16),
+  last_seen datetime,
+  is_admin int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
+  UNIQUE KEY email_UNIQUE (`email`),
+  UNIQUE KEY username_UNIQUE (`username`)
+);
+
+CREATE TABLE poll_questions (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128),
+  ans_1 varchar(64),
+  ans_2 varchar(64),
+  ans_3 varchar(64),
+  ans_4 varchar(64),
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE poll_answers (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  question varchar(128),
+  answer varchar(128),
+  PRIMARY KEY (`id`)
 );
