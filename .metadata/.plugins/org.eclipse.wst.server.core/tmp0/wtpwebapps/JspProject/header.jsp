@@ -96,7 +96,7 @@
 	%>
 	<div class="first-logo">
 		<div class="menuBarOption">
-			<a href="https://www.firstisrael.org.il/"><img
+			<a onclick="openFirstPage()"><img
 				src="img/FIRSTWordMark_Black.gif" class="first-logo-img" /></a>
 		</div>
 	</div>

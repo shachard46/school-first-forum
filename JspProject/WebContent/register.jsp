@@ -19,7 +19,7 @@
 		<!-- <h3>הרשמה</h3> -->
 		<div class="s_r_container">
 			<form name="register" action="dbRegister.jsp"
-				onsubmit="checkAll();" method="post">
+				onsubmit="return checkAll();" method="post">
 				<label> שם משתמש</label> <input type="text" name="username"
 					placeholder="הכנס שם משתמש" /> <label>סיסמה</label> <input
 					type="password" name="password" placeholder="הכנס סיסמה" /> <label>

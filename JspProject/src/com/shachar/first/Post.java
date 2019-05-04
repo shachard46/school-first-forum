@@ -1,25 +1,19 @@
 package com.shachar.first;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-
 public class Post {
 	private int id;
 	private String postName;
 	private String email;
 	private String postText;
 	private String postTopicName;
-	private String postDate;
-
-	Date date = new Date();
-	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	private Date postDate;
 
 	public Post(String postName, String email, String postText, String postTopicName) {
 		this.email = email;
 		this.postText = postText;
 		this.postTopicName = postTopicName;
-		postDate = formatter.format(date);
+		this.postDate = new Date();
 		this.postName = postName;
 
 	}
@@ -56,13 +50,14 @@ public class Post {
 		this.postTopicName = postTopicName;
 	}
 
-	public String getPostDate() {
+	public Date getPostDate() {
 		return postDate;
 	}
-
-	public void setPostDate() {
-		postDate = formatter.format(date);
+	
+	public void setPostDate(Date postDate) {
+		this.postDate = postDate;
 	}
+
 
 	public String getPostName() {
 		return postName;

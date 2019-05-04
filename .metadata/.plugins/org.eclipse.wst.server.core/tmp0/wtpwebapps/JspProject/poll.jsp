@@ -9,14 +9,14 @@
 <!DOCTYPE html>
 <html dir="rtl">
 <head>
-<link rel="stylesheet" type="text/css" href="style.css" />
-
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script type="text/javascript" src="functions.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<%@include file="header.jsp"%>
-	<form action="dbPollAnswers.jsp" method="GET" accept-charset="UTF-8">
+	<form action="dbPollAnswers.jsp" method="GET" accept-charset="UTF-8" name="poll" onsubmit="return checkAllPoll()">
 		<table class="container poll_container">
 			<%
 				for (PollQuestion pollQuestion : pollQuestions) {

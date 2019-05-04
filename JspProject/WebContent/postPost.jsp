@@ -8,13 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript" src="functions.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 	<%@include file="header.jsp"%>
 
 	<form name="postPost" action="dbPost.jsp" method="post"
-		onsubmit="checkPostPost()">
+		onsubmit="return checkPostPost()">
 		<table class="container post_container">
 			<tr>
 				<td class="textareaTd" colspan="2"><label

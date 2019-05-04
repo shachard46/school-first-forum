@@ -1,7 +1,0 @@
-CREATE TABLE topics (
-  id int(11) NOT NULL AUTO_INCREMENT,
-  parent_id int(11) NULL,
-  name varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-);

@@ -2,9 +2,13 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@include file="dbMembers.jsp"%>
+<%@page import="static com.shachar.first.Utils.*"%>
 
 <%
-	User user = userDatabase.getUserByEmail((String) request.getParameter("email"));
+	User user = null;
+	String requestEmail = (String) request.getParameter("email");
+	if (requestEmail != null) {
+		user = userDatabase.getUserByEmail(requestEmail);
 %>
 <html dir="rtl">
 <head>
@@ -23,35 +27,40 @@
 						<img src="img/no-profile-image.jpg" alt="user profile photo" />
 					</div>
 					<div class="user_info">
-						<div class="big_font"><%=user.getUsername()%></div>
+						<%
+							if (formatDatabaseDate(user.getLastSeen()).equals("1970-01-01 00:00:00")) {
+						%>
+						<div class="big_font"><%=user.getUsername()%><img
+								class="online" src="./img/online1.png" /><span
+								class="online_text"> מחובר</span>
+						</div>
+						<div class="small_font">
+							קבוצה מספר
+							<%=user.getTeamNumber()%></div>
+						<div class="small_font">
+							<%=user.getTeamJob()%></div>
+						<%
+							} else {
+						%>
+						<div class="big_font"><%=user.getUsername()%><img
+								class="online" src="./img/offline.png" />
+						</div>
 						<div class="small_font">
 							קבוצה מספר
 							<%=user.getTeamNumber()%></div>
 						<div class="small_font">
 							<%=user.getTeamJob()%></div>
 						<div class="date">
-							נראה לאחרונה ב:
-							<%=user.getLastSeen()%></div>
+							נראה לאחרונה לפני:
+							<%=getPeriod(user.getLastSeen())%></div>
+						<%
+							}
+						%>
+					</div>
+				</td>
+			</tr>
+			<tr class="spacer"></tr>
 
-					</div>
-				</td>
-			</tr>
-			<tr class="spacer"></tr>
-			<tr class="info_head">
-				<td colspan="3"><div class="panel_header header">פרטים
-						בפורום</div></td>
-			</tr>
-			<tr class="info_head">
-				<td colspan="3">
-					<div class="panel">
-						<div class="small_font">הצטרף בתאריך: *תאריך*</div>
-						<div class="small_font">
-							פוסטים:
-							<%=postDatabase.getUserPostsByEmail(user.getEmail()).size()%></div>
-					</div>
-				</td>
-			</tr>
-			<tr class="spacer"></tr>
 			<tr class="info_head">
 				<td colspan="3"><div class="panel_header header">מידע
 						נוסף</div></td>
@@ -74,6 +83,10 @@
 						<div class="small_font">
 							שנת הצטרפות:
 							<%=user.getRookieTime()%></div>
+
+						<div class="small_font">
+							פוסטים:
+							<%=postDatabase.getUserPostsByEmail(user.getEmail()).size()%></div>
 					</div>
 				</td>
 			</tr>
@@ -81,3 +94,8 @@
 	</div>
 </body>
 </html>
+<%
+	} else {
+		response.sendRedirect("forumBase.jsp");
+	}
+%>

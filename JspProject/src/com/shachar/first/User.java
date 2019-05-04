@@ -1,8 +1,8 @@
 package com.shachar.first;
 
+//import static com.shachar.first.Utils.*;
+
 import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 public class User {
 	private int id;
@@ -14,13 +14,11 @@ public class User {
 	private String country;
 	private String teamJob;
 	private String rookieTime;
-	private String lastSeen;
+	private Date lastSeen;
 	private int isAdmin;
 
 	public User(String username, String password, String email, String compType, String teamNumber, String country,
 			String teamJob, String rookieTime, int isAdmin) {
-		Date date = new Date();
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		this.username = username;
 		this.password = password;
 		this.email = email;
@@ -29,7 +27,7 @@ public class User {
 		this.country = country;
 		this.teamJob = teamJob;
 		this.rookieTime = rookieTime;
-		lastSeen = formatter.format(date);
+		lastSeen = new Date();
 		this.isAdmin = isAdmin;
 	}
 
@@ -105,18 +103,17 @@ public class User {
 		this.rookieTime = rookieTime;
 	}
 
-	public String getLastSeen() {
-		Date date = new Date();
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		if (lastSeen.equals(formatter.format(date)))
-			return "היום";
+	public Date getLastSeen() {
+//		if (lastSeen.equals(formatDate((getDate()))))
+//			return "היום";
 		return lastSeen;
 	}
+	public void setLastSeenNow() {
+		lastSeen = new Date();
+	}
 
-	public void setLastSeen() {
-		Date date = new Date();
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		lastSeen = formatter.format(date);
+	public void setLastSeen(Date lastSeen) {
+		this.lastSeen = lastSeen;
 	}
 
 	public int getIsAdmin() {

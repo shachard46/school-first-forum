@@ -1,5 +1,7 @@
 package com.shachar.first;
 
+import static com.shachar.first.Utils.formatDatabaseDate;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,13 +17,17 @@ public class PostDatabase extends AbstractEntityDatabase<Post> {
 		return String.format(
 				"insert into posts " + "(post_name, email, post_text, post_topic_name, post_date)"
 						+ " values('%s', '%s', '%s', '%s', '%s')",
-				entity.getPostName(), entity.getEmail(), entity.getPostText(), entity.getPostTopicName(), entity.getPostDate());
+				entity.getPostName(), entity.getEmail(), entity.getPostText(), entity.getPostTopicName(), 
+				formatDatabaseDate(entity.getPostDate()));
 	}
 
 	@Override
 	protected Post entityFromResultSet(ResultSet rs) throws SQLException {
-		Post post = new Post(rs.getString("post_name"), rs.getString("email"), rs.getString("post_text"),
+		Post post = new Post(rs.getString("post_name"), 
+				rs.getString("email"), 
+				rs.getString("post_text"),
 				rs.getString("post_topic_name"));
+		post.setPostDate(rs.getTimestamp("post_date"));
 		post.setId(rs.getInt("id"));
 		return post;
 	}

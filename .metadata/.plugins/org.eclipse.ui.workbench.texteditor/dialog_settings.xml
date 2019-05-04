@@ -1,47 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="User"/>
+		<item key="selection" value="date"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="true"/>
 		<list key="findhistory">
-			<item value="post"/>
-			<item value="user"/>
-			<item value="@override"/>
-			<item value="User"/>
-			<item value="butt"/>
-			<item value="send"/>
-			<item value="submit"/>
-			<item value="td{"/>
-			<item value="td\{"/>
-			<item value="tf{"/>
-			<item value="radius: 7"/>
-			<item value="radiusl"/>
-			<item value="radiusך"/>
-			<item value="radius: 15"/>
-			<item value="radius:15"/>
+			<item value="date"/>
+			<item value="days"/>
+			<item value="un"/>
+			<item value="unsupo"/>
+			<item value=" COLLATE utf8mb4_general_ci DEFAULT NULL"/>
+			<item value="int"/>
+			<item value="Connector"/>
+			<item value="UTF"/>
+			<item value="utf"/>
+			<item value="iso"/>
+			<item value="utf8"/>
+			<item value="span"/>
+			<item value="hr\{"/>
+			<item value="hr{"/>
+			<item value="hr"/>
 		</list>
 		<list key="replacehistory">
-			<item value="User"/>
-			<item value="post"/>
 			<item value=""/>
-			<item value="Post"/>
-			<item value="radius: 9"/>
-			<item value="radius: 7"/>
-			<item value=".jsp"/>
-			<item value="jsp"/>
-			<item value="String $1 = rs.getString(&quot;$1&quot;);"/>
-			<item value="private String $1;"/>
+			<item value="double"/>
+			<item value="div"/>
+			<item value="width=$1"/>
+			<item value="length"/>
+			<item value="disconnected"/>
+			<item value="\n"/>
+			<item value="INSERT into topics(name, parent_id) select &apos;$1&apos;, id from topics where name = &apos;אחר&apos;;&#x0A;"/>
+			<item value="INSERT into topics(name, parent_id) select &apos;$1&apos;, id from topics where name = &apos;תחרות&apos;;&#x0A;"/>
+			<item value="INSERT into topics(name, parent_id) select &apos;$1&apos;, id from topics where name = &apos;טכני&apos;;&#x0A;"/>
+			<item value="INSERT into topics(name, parent_id) select &apos;$1&apos;, id from topics where name = &apos;טכני;&#x0A;"/>
+			<item value="INSERT into topics(name, parent_id) select &apos;$1&apos;, id from topics where name = &apos;פירסט&apos;;&#x0A;"/>
+			<item value="INSERT into"/>
+			<item value="$1"/>
+			<item value="INSERT to topics(name) values(&apos;$1&apos;);"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="909"/>
-		<item key="DIALOG_Y_ORIGIN" value="296"/>
-		<item key="DIALOG_WIDTH" value="294"/>
-		<item key="DIALOG_HEIGHT" value="408"/>
+		<item key="DIALOG_X_ORIGIN" value="626"/>
+		<item key="DIALOG_Y_ORIGIN" value="617"/>
+		<item key="DIALOG_WIDTH" value="814"/>
+		<item key="DIALOG_HEIGHT" value="216"/>
 		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
 	</section>
 </section>

@@ -32,7 +32,7 @@ INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('האם את
 INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('האם את מרוצה השנה מהצוות החדש של פירסט ישראל?', 'עשו עבודה מעולה', 'טעון שיפור', 'לא אהבתי', 'נוראי, צריכים צוות חדש');
 INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('איך לדעתך ההגנה השפיעה על המשחק ב2019?', 'שיפרה את המשחק, הפכה אותו ליותר מעניין', 'לא היה שינוי', 'השפיעה קצת', 'הרסה את המשחק');
 INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('מה לדעתך היה בארבעת השנים האחרונות השנה המשחק הטוב ביותר של פירסט', 'Deep Space - 2019', 'Power Up - 2018', 'SteamWorks - 2017', 'StrongHold - 2016');
-INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');
-INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');
-INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');
-INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('', '', '', '', '');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('מאיזה תוכנית של פירסט הכי נהינת?', 'FLL Jr.', 'FLL', 'FTC', 'FRC');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('באיזה תוכנית של פירסט אתה נמצא עכשיו?', 'FLL Jr.', 'FLL', 'FTC', 'FRC');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('כמה פעמים הגעת לתחרות העולמית?', 'כל שנה', 'פעם פעמיים', 'שלוש ארבע פעמים', 'אף פעם');
+INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('האם אתה חושב שאסטרטגיה טובה יכולה לנצח משחק?', 'כן', 'תלוי בצוות', 'לא ממש', 'לא');

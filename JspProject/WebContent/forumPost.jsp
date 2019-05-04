@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.shachar.first.*"%>
+<%@ page import="static com.shachar.first.Utils.*"%>
 <%@include file="dbMembers.jsp"%>
 
 <%
@@ -27,7 +28,7 @@
 						<img src="img/no-profile-image.jpg" alt="user profile photo" />
 					</div>
 					<div class="user_info">
-						<div class="date"><%=post.getPostDate()%></div>
+						<div class="date" dir="ltr"><%=formatDate(post.getPostDate())%></div>
 						<div class="big_font">
 							<a href="oneUser.jsp"><%=user.getUsername()%></a>
 						</div>

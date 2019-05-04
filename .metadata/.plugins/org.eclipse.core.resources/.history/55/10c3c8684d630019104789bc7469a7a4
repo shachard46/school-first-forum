@@ -1,7 +1,0 @@
-package com.shachar.first;
-
-public class Topic {
-	private int id;
-	private String name;
-	private int parent_id;
-}

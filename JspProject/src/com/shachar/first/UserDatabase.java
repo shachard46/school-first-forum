@@ -2,6 +2,8 @@ package com.shachar.first;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+//import static com.shachar.first.Utils.formatDatabaseDate;
+
 
 public class UserDatabase extends AbstractEntityDatabase<User> {
 	@Override
@@ -22,13 +24,14 @@ public class UserDatabase extends AbstractEntityDatabase<User> {
 				entity.getUsername(), entity.getPassword(), entity.getEmail(), entity.getCompType(),
 				entity.getTeamNumber(), entity.getCountry(), entity.getTeamJob(), entity.getRookieTime(), entity.getIsAdmin());
 	}
-
+	
 	@Override
 	protected User entityFromResultSet(ResultSet rs) throws SQLException {
 		User user = new User(rs.getString("username"), rs.getString("password"), rs.getString("email"),
 				rs.getString("compType"), rs.getString("teamNumber"), rs.getString("country"), rs.getString("teamJob"),
 				rs.getString("rookieTime"), rs.getInt("is_admin"));
 		user.setId(rs.getInt("id"));
+		user.setLastSeen(rs.getTimestamp("last_seen"));
 		return user;
 	}
 	public User getUserByUsername(String username) {
@@ -38,6 +41,4 @@ public class UserDatabase extends AbstractEntityDatabase<User> {
 	public User getUserByEmail(String email) {
 		return getSingleEntityByQuery(String.format("select * from members where email = '%s'", email));
 	}
-
-
 }
