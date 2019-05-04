@@ -1,8 +1,0 @@
-0:0:0:0:0:0:0:1 - - [27/Apr/2019:15:02:31 +0300] "GET /JspProject/signIn.jsp HTTP/1.1" 200 1582
-0:0:0:0:0:0:0:1 - - [27/Apr/2019:15:02:31 +0300] "GET /JspProject/style.css HTTP/1.1" 304 -
-0:0:0:0:0:0:0:1 - - [27/Apr/2019:15:02:33 +0300] "GET /JspProject/register.jsp HTTP/1.1" 200 17360
-0:0:0:0:0:0:0:1 - - [27/Apr/2019:15:02:33 +0300] "GET /JspProject/functions.js HTTP/1.1" 304 -
-0:0:0:0:0:0:0:1 - - [27/Apr/2019:15:03:10 +0300] "POST /JspProject/dbRegister.jsp HTTP/1.1" 302 -
-0:0:0:0:0:0:0:1 - - [27/Apr/2019:15:03:11 +0300] "GET /JspProject/forumBase.jsp HTTP/1.1" 200 6648
-0:0:0:0:0:0:0:1 - - [27/Apr/2019:15:03:14 +0300] "GET /JspProject/poll.jsp HTTP/1.1" 200 5115
-0:0:0:0:0:0:0:1 - - [27/Apr/2019:15:03:19 +0300] "GET /JspProject/oneUser.jsp?email=shachar.david@gmail.com HTTP/1.1" 200 2705
