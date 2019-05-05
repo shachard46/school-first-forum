@@ -1,4 +1,4 @@
-CREATE TABLE topics (
+CREATE TABLE IF NOT EXISTS topics (
   id int(11) NOT NULL AUTO_INCREMENT,
   parent_id int(11) NULL,
   `name` varchar(255) NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE topics (
   UNIQUE KEY `name_UNIQUE` (`name`)
 );
 
-CREATE TABLE posts (
+CREATE TABLE IF NOT EXISTS posts (
   id int(11) NOT NULL AUTO_INCREMENT,
   post_name varchar(255) NULL,
   email varchar(32)  NULL,
@@ -17,7 +17,7 @@ CREATE TABLE posts (
 );
 
 
-CREATE TABLE members (
+CREATE TABLE IF NOT EXISTS members (
   id int(11) NOT NULL AUTO_INCREMENT,
   username varchar(32),
   `password` varchar(32),
@@ -34,7 +34,7 @@ CREATE TABLE members (
   UNIQUE KEY username_UNIQUE (`username`)
 );
 
-CREATE TABLE poll_questions (
+CREATE TABLE IF NOT EXISTS poll_questions (
   id int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128),
   ans_1 varchar(64),
@@ -44,7 +44,7 @@ CREATE TABLE poll_questions (
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE poll_answers (
+CREATE TABLE IF NOT EXISTS poll_answers (
   id int(11) NOT NULL AUTO_INCREMENT,
   question varchar(128),
   answer varchar(128),
