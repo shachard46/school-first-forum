@@ -10,6 +10,5 @@
 			request.getParameter("postTopicName"));
 	postDatabase.create(post);
 	
-	
 	response.sendRedirect("forumBase.jsp");
 %>

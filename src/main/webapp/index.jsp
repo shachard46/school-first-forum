@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.shachar.first.*"%>
+<%@ page import="static com.shachar.first.Utils.*"%>
+<%@include file="dbMembers.jsp"%>
+
 <html dir="rtl">
   <head>
     <title>FirstForum</title>
@@ -17,7 +23,7 @@
           <td>אימייל: <a href="mailto:shachadavid2013@gmail.com"> המייל שלי</a></td>
         </tr>
         <tr>
-          <td>קישור לפרויקט: <a href="forumBase.html"> קישור</a></td>
+          <td>קישור לפרויקט: <a href="forumBase.jsp"> קישור</a></td>
         </tr>
       </table>
     </div>
