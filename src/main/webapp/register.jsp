@@ -25,8 +25,8 @@
 					type="password" name="password" placeholder="הכנס סיסמה" /> <label>
 					אשר סיסמה</label> <input type="password" name="password_confirm"
 					placeholder="אשר סיסמה" /> <label>כתובת דואר</label> <input
-					type="email" name="email" placeholder="הכנס כתובת דואר" /> <label>אשר
-					כתובת דואר</label> <input type="email" name="email_confirm"
+					type="text" name="email" placeholder="הכנס כתובת דואר" /> <label>אשר
+					כתובת דואר</label> <input type="text" name="email_confirm"
 					placeholder="הכנס כתובת דואר" /> <label>סוג תחרות</label> <select
 					name="compType">
 					<option value="FRC">FRC</option>

@@ -104,8 +104,6 @@ public class User {
 	}
 
 	public Date getLastSeen() {
-//		if (lastSeen.equals(formatDate((getDate()))))
-//			return "היום";
 		return lastSeen;
 	}
 	public void setLastSeenNow() {
