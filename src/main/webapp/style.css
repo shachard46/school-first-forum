@@ -17,7 +17,6 @@ img.first-logo-img {
   width: 86%;
   height: 32px;
 }
-
 .menuBar {
   top: 0;
   position: sticky;
@@ -145,7 +144,6 @@ div.big_font {
 .date {
   background-color: #bebdbd;
   float: left;
-  display: inline-block;
   text-align: left;
   width: 60%;
   padding-left: 0.65%;
@@ -240,7 +238,7 @@ select {
   height: 35px;
   margin-left: 110px;
   margin-top: 14px;
-  margrin: auto;
+  margin: auto;
   border-radius: 7px;
   margin-top: 14px;
 }
@@ -510,4 +508,9 @@ input[type="radio"] {
 
 .signIn .send-button {
   width: 100% !important;
+}
+
+.quiz {
+  width: 15px !important;
+  height: 15px !important;
 }

@@ -50,3 +50,13 @@ CREATE TABLE IF NOT EXISTS poll_answers (
   answer varchar(128),
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE IF NOT EXISTS db.quiz_questions (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128),
+  ans_1 varchar(64),
+  ans_2 varchar(64),
+  ans_3 varchar(64),
+  ans_4 varchar(64),
+  PRIMARY KEY (`id`)
+);

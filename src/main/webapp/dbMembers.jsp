@@ -13,5 +13,5 @@
 	UserDatabase userDatabase = new UserDatabase();
 	PollQuestionDatabase pollQuestionDatabase = new PollQuestionDatabase();
 	PollAnswerDatabase pollAnswerDatabase = new PollAnswerDatabase();
-	
-%>
+	QuizQuestionDatabase quizQuestionDatabase = new QuizQuestionDatabase();
+	%>

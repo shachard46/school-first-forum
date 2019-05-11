@@ -62,5 +62,39 @@ function checkPostPost() {
   return checkPostPostText("postName") && checkPostPostText("postText");
 }
 function openFirstPage() {
-  var newWin = window.open("firstIsrael.jsp", "www.firstisrael.org.il/", "width=500px, height=500px");
+  var newWin = window.open(
+    "firstIsrael.jsp",
+    "www.firstisrael.org.il/",
+    "width=500px, height=500px"
+  );
+}
+var rightAnswersForQuestions = {
+  1: 2,
+  2: 3
+};
+
+function checkQuiz() {
+  for (i = 0; i < document.quiz.elements.length; i++) {
+    var quizElement = document.quiz.elements[i];
+    var questionID = quizElement.name;
+    var ansID = quizElement.value;
+    var img = document.createElement("img");
+    img.style = "width: 25px; height: 25px; margin-top: 5px";
+
+    if (questionID && questionID.startsWith("q_")) {
+      if (quizElement.checked) {
+        var span = document.getElementById(questionID + "_" + ansID);
+        if (span && rightAnswersForQuestions[questionID[2]] == ansID) {
+          img.src = "img/check-image.png";
+        } else {
+          img.src = "img/wrong.png";
+        }
+        span.appendChild(img);
+      }
+    } else {
+      quizElement.parentElement.style.display = "none";
+    }
+    quizElement.style.display = "none";
+  }
+  return false;
 }

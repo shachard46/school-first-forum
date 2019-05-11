@@ -36,3 +36,14 @@ INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('מאיזה 
 INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('באיזה תוכנית של פירסט אתה נמצא עכשיו?', 'FLL Jr.', 'FLL', 'FTC', 'FRC');
 INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('כמה פעמים הגעת לתחרות העולמית?', 'כל שנה', 'פעם פעמיים', 'שלוש ארבע פעמים', 'אף פעם');
 INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('האם אתה חושב שאסטרטגיה טובה יכולה לנצח משחק?', 'כן', 'תלוי בצוות', 'לא ממש', 'לא');
+
+
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values('question', 'ans1', 'ans2', 'ans3', 'ans4');
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
