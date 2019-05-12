@@ -67,6 +67,7 @@ function openFirstPage() {
     "www.firstisrael.org.il/",
     "width=500px, height=500px"
   );
+  window.location.href = "onFirst.jsp";
 }
 var rightAnswersForQuestions = {
   1: 2,
@@ -79,7 +80,7 @@ function checkQuiz() {
     var questionID = quizElement.name;
     var ansID = quizElement.value;
     var img = document.createElement("img");
-    img.style = "width: 25px; height: 25px; margin-top: 5px";
+    img.className = "quiz";
 
     if (questionID && questionID.startsWith("q_")) {
       if (quizElement.checked) {
@@ -91,10 +92,11 @@ function checkQuiz() {
         }
         span.appendChild(img);
       }
+      quizElement.style.display = "none";
     } else {
-      quizElement.parentElement.style.display = "none";
+      quizElement.value = "נסה שוב";
+      document.quiz.onsubmit = true;
     }
-    quizElement.style.display = "none";
   }
   return false;
 }

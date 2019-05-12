@@ -49,7 +49,7 @@ import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%>
        	}
       %>
         <tr>
-          <td><input type="submit" value="שלח" class="post_button" /></td>
+          <td><input type="submit" name="submit" value="שלח" class="post_button" /></td>
         </tr>
       </table>
     </form>
