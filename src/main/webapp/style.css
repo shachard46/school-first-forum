@@ -14,8 +14,8 @@ body {
 
 img.first-logo-img {
   border-radius: 0px !important;
-  width: 86%;
-  height: 32px;
+  width: 86% !important;
+  height: 32px !important;
 }
 .menuBar {
   top: 0;
@@ -95,7 +95,20 @@ a:hover {
   padding: 30px;
   background-color: #efefef;
 }
-
+.on_first .container {
+  width: 85%;
+}
+.on_first td {
+  text-align: right !important;
+}
+.on_first img {
+  border-radius: 7px;
+  height: inherit;
+  width: 200px;
+}
+.on_first .trophy {
+  height: 320px;
+}
 .post_container {
   width: 65% !important;
 }
@@ -511,6 +524,7 @@ input[type="radio"] {
 }
 
 .quiz {
-  width: 15px !important;
-  height: 15px !important;
+  width: 25px !important;
+  height: 25px !important;
+  margin-top: 5px !important;
 }
