@@ -1,8 +1,10 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="static com.shachar.first.Utils.*"%>
 <%@page import="java.util.Map"%>
 <%@include file="dbMembers.jsp"%>
+<%if(curUser != null){%>
 <%
 	List<PollQuestion> pollQuestions = pollQuestionDatabase.getAllEntities();
 %>
@@ -75,3 +77,7 @@
 
 </body>
 </html>
+<%}else{
+	response.sendRedirect("signIn.jsp");
+}
+%>

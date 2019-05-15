@@ -1,14 +1,16 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@include file="dbMembers.jsp"%>
 <%@page import="static com.shachar.first.Utils.*"%>
-
+<%if(curUser != null){%>
 <%
 	User user = null;
 	String requestEmail = (String) request.getParameter("email");
 	if (requestEmail != null) {
 		user = userDatabase.getUserByEmail(requestEmail);
+	}
 %>
 <html dir="rtl">
 <head>
@@ -30,29 +32,36 @@
 						<%
 							if (formatDatabaseDate(user.getLastSeen()).equals("1970-01-01 00:00:00")) {
 						%>
-						<div class="big_font"><%=user.getUsername()%><img
-								class="online" src="./img/online1.png" /><span
-								class="online_text"> מחובר</span>
+						<div class="big_font">
+							<%=user.getUsername()%><img class="online"
+								src="./img/online1.png" /><span class="online_text">
+								מחובר</span>
 						</div>
 						<div class="small_font">
 							קבוצה מספר
-							<%=user.getTeamNumber()%></div>
+							<%=user.getTeamNumber()%>
+						</div>
 						<div class="small_font">
-							<%=user.getTeamJob()%></div>
+							<%=user.getTeamJob()%>
+						</div>
 						<%
 							} else {
 						%>
-						<div class="big_font"><%=user.getUsername()%><img
-								class="online" src="./img/offline.png" />
+						<div class="big_font">
+							<%=user.getUsername()%><img class="online"
+								src="./img/offline.png" />
 						</div>
 						<div class="small_font">
 							קבוצה מספר
-							<%=user.getTeamNumber()%></div>
+							<%=user.getTeamNumber()%>
+						</div>
 						<div class="small_font">
-							<%=user.getTeamJob()%></div>
+							<%=user.getTeamJob()%>
+						</div>
 						<div class="date">
 							נראה לאחרונה לפני:
-							<%=getPeriod(user.getLastSeen())%></div>
+							<%=getPeriod(user.getLastSeen())%>
+						</div>
 						<%
 							}
 						%>
@@ -62,31 +71,49 @@
 			<tr class="spacer"></tr>
 
 			<tr class="info_head">
-				<td colspan="3"><div class="panel_header header">מידע
-						נוסף</div></td>
+				<td colspan="3">
+					<div class="panel_header header">
+						מידע נוסף
+						<%
+						if ((curAdmin || user.getUsername().equals(curUser.getUsername()))
+									&& !user.getUsername().equals("admin")) {
+					%>
+						<a href="edit.jsp?username=<%=user.getUsername()%>"
+							style="float: left;">ערוך</a>
+						<%
+							}
+						%>
+					</div>
+				</td>
 			</tr>
 			<tr class="info_head">
 				<td colspan="3">
 					<div class="panel">
 						<div class="small_font">
 							מיקום:
-							<%=user.getCountry()%></div>
+							<%=user.getCountry()%>
+						</div>
 						<div class="small_font">
 							מספר קבוצה:
-							<%=user.getTeamNumber()%></div>
+							<%=user.getTeamNumber()%>
+						</div>
 						<div class="small_font">
 							תחרות:
-							<%=user.getCompType()%></div>
+							<%=user.getCompType()%>
+						</div>
 						<div class="small_font">
 							תפקיד בקבוצה:
-							<%=user.getTeamJob()%></div>
+							<%=user.getTeamJob()%>
+						</div>
 						<div class="small_font">
 							שנת הצטרפות:
-							<%=user.getRookieTime()%></div>
+							<%=user.getRookieTime()%>
+						</div>
 
 						<div class="small_font">
 							פוסטים:
-							<%=postDatabase.getUserPostsByEmail(user.getEmail()).size()%></div>
+							<%=postDatabase.getUserPostsByEmail(user.getEmail()).size()%>
+						</div>
 					</div>
 				</td>
 			</tr>
@@ -96,6 +123,6 @@
 </html>
 <%
 	} else {
-		response.sendRedirect("forumBase.jsp");
+		response.sendRedirect("signIn.jsp");
 	}
 %>

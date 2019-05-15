@@ -1,11 +1,11 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.shachar.first.*"%>
 <%@ page import="java.util.*"%>
 <%@include file="dbMembers.jsp"%>
+<%if(curUser != null){%>
 <%
-	User curUser = userDatabase.getUserByEmail((String) request.getSession().getAttribute("currentUserEmail"));
-	boolean curAdmin = curUser.getIsAdmin() == 1 ? true : false;
 	List<User> users;
 	if (request.getQueryString() == null || request.getParameter("search").isEmpty()) {
 		users = userDatabase.getAllEntities();
@@ -108,7 +108,7 @@
 					<td class="small_td"><a href="edit.jsp?username=<%=user.getUsername()%>">ערוך</a></td>
 
 					<%
-						} else if (!user.getUsername().equals("admin")) {
+						} else if (!user.getUsername().equals("admin") || !user.getUsername().equals(curUser.getUsername())) {
 					%>
 
 					<td class="med_td"><a
@@ -137,3 +137,7 @@
 	</div>
 </body>
 </html>
+<%}else{
+	response.sendRedirect("signIn.jsp");
+}
+%>
