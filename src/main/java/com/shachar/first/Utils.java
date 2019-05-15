@@ -58,7 +58,6 @@ public class Utils {
 		calendar.set(2019, 4, 7, 12, 36, 14);
 		Date date = new Date();
 		date.setTime(calendar.getTimeInMillis());
-		Period period = new Period(date.getTime(), (new Date()).getTime());
 	}
 
 }
