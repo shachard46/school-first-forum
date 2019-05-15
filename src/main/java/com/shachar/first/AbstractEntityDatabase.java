@@ -155,6 +155,12 @@ public abstract class AbstractEntityDatabase<EntityType> {
 		}
 		return null; 
 	}
+	public List<EntityType> getEntityByField(String field, String value) {
+		return getEntitiesByQuery(String.format("select * from %s where %s='%s'", getEntityTableName(), field, value));
+	}
+	public List<EntityType> getEntityByField(String field, int value) {
+		return getEntitiesByQuery(String.format("select * from %s where %s=%d", getEntityTableName(), field, value));
+	}
 	private String updateEntityFieldSQL(String field, String unique,String uniqueValue, int value) {
 		return String.format("update %s set %s=%d where %s='%s'",getEntityTableName(), field, value, unique, uniqueValue);
 	}

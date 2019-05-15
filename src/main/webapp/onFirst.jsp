@@ -135,7 +135,7 @@
           5987 זכו בEI עולמי<br />
         </td>
 
-        <td><img class="trophy" src="img/trophy.png"/></td>
+        <td><img id="trophy" src="img/trophy.png"/></td>
       </tr>
     </tables>
   </body>

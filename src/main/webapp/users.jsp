@@ -3,10 +3,16 @@
 <%@ page import="com.shachar.first.*"%>
 <%@ page import="java.util.*"%>
 <%@include file="dbMembers.jsp"%>
-
 <%
 	User curUser = userDatabase.getUserByEmail((String) request.getSession().getAttribute("currentUserEmail"));
-	List<User> users = userDatabase.getAllEntities();
+	boolean curAdmin = curUser.getIsAdmin() == 1 ? true : false;
+	List<User> users;
+	if (request.getQueryString() == null || request.getParameter("search").isEmpty()) {
+		users = userDatabase.getAllEntities();
+	} else {
+		users = userDatabase.getEntityByField((String) request.getParameter("field"),
+				(String) request.getParameter("search"));
+	}
 %>
 <!DOCTYPE html>
 <html dir="rtl">
@@ -19,84 +25,115 @@
 	<%@include file="header.jsp"%>
 
 	<div class="big_container">
-		<table class="container">
-			<%
-				if (curUser.getIsAdmin() == 0) {
-			%>
-			<tr>
-				<td class="header big_td">שם משתמש</td>
-				<td class="header small_td">פוסטים</td>
-				<td class="header med_td">תחרות</td>
-				<td class="header med_td">קבוצה</td>
-				<td class="header big_td">תפקיד בקבוצה</td>
-				<td class="header med_td">שנת הצטרפות</td>
-			</tr>
-			<%
-				for (User user : users) {
-			%><tr>
-				<td class='big_td'><a
-					href='oneUser.jsp?email=<%=user.getEmail()%>'><%=user.getUsername()%></a></td>
-				<td class='small_td'><%=postDatabase.getUserPostsByEmail(user.getEmail()).size()%></td>
-				<td class='med_td'><%=user.getCompType()%></td>
-				<td class='med_td'><%=user.getTeamNumber()%></td>
-				<td class='big_td'><%=user.getTeamJob()%></td>
-				<td class='med_td'><%=user.getRookieTime()%></td>
-			</tr>
-			<%
-				}
-				} else {
-			%>
-			<tr>
-				<td class="header big_td">שם משתמש</td>
-				<td class="header small_td">פוסטים</td>
-				<td class="header med_td">תחרות</td>
-				<td class="header med_td">קבוצה</td>
-				<td class="header big_td">תפקיד בקבוצה</td>
-				<td class="header med_td">שנת הצטרפות</td>
-				<td class="header med_td">הפוך למנהל</td>
-				<td class="header small_td">מחיקה</td>
-			</tr>
-			<%
-				for (User user : users) {
-			%><tr>
-				<td class='big_td'><a
-					href='oneUser.jsp?email=<%=user.getEmail()%>'><%=user.getUsername()%></a></td>
-				<td class='small_td'><%=postDatabase.getUserPostsByEmail(user.getEmail()).size()%></td>
-				<td class='med_td'><%=user.getCompType()%></td>
-				<td class='med_td'><%=user.getTeamNumber()%></td>
-				<td class='big_td'><%=user.getTeamJob()%></td>
-				<td class='med_td'><%=user.getRookieTime()%></td>
+		<form action="users.jsp" method="get">
+			<table class="container">
+				<tr class="search">
+					<td colspan="<%=curAdmin ? 7 : 5%>"><input type="text"
+						placeholder="חפש.." name="search" /></td>
+					<td rowspan="2" colspan="<%=curAdmin ? 2 : 1%>">
+						<button type="submit">
+							<img src="img/search.PNG" />
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="<%=curAdmin ? 7 : 5%>"><select name="field"><option
+								value="username">שם משתמש</option>
+							<option value="compType">סוג תחרות</option>
+							<option value="teamNumber">מספר קבוצה</option></select></td>
+				</tr>
 				<%
-					if (user.getIsAdmin() == 0) {
+					if (!curAdmin) {
 				%>
-
-				<td class='med_td'><a
-					href="dbManageUsers.jsp?email=<%=user.getEmail()%>&will_admin=1">לא
-						מנהל</a></td>
-				<td class='small_td'><a
-					href="dbManageUsers.jsp?email=<%=user.getEmail()%>">מחק</a></td>
+				<tr>
+					<td class="header big_td">שם משתמש</td>
+					<td class="header small_td">פוסטים</td>
+					<td class="header med_td">תחרות</td>
+					<td class="header med_td">קבוצה</td>
+					<td class="header big_td">תפקיד בקבוצה</td>
+					<td class="header med_td">שנת הצטרפות</td>
+				</tr>
 				<%
-					} else if (!user.getUsername().equals("admin")) {
+					for (User user : users) {
 				%>
-
-				<td class='med_td'><a
-					href="dbManageUsers.jsp?email=<%=user.getEmail()%>&will_admin=0">מנהל</a></td>
-				<td class='small_td'></td>
-				<%
-					} else {
-				%>
-				<td class='med_td'>מנהל</td>
-				<td class='small_td'></td>
-
+				<tr>
+					<td class="big_td"><a
+						href="oneUser.jsp?email=<%=user.getEmail()%>"><%=user.getUsername()%></a>
+					</td>
+					<td class="small_td"><%=postDatabase.getUserPostsByEmail(user.getEmail()).size()%>
+					</td>
+					<td class="med_td"><%=user.getCompType()%></td>
+					<td class="med_td"><%=user.getTeamNumber()%></td>
+					<td class="big_td"><%=user.getTeamJob()%></td>
+					<td class="med_td"><%=user.getRookieTime()%></td>
+				</tr>
 				<%
 					}
+					} else {
 				%>
-			</tr>
-			<%
-				}
-				}
-			%>
-		</table>
+				<tr>
+					<td class="header big_td">שם משתמש</td>
+					<td class="header small_td">פוסטים</td>
+					<td class="header med_td">תחרות</td>
+					<td class="header med_td">קבוצה</td>
+					<td class="header big_td">תפקיד בקבוצה</td>
+					<td class="header med_td">שנת הצטרפות</td>
+					<td class="header med_td">הפוך למנהל</td>
+					<td class="header small_td">מחיקה</td>
+					<td class="header small_td">עריכה</td>
+				</tr>
+				<%
+					for (User user : users) {
+							boolean admin = user.getIsAdmin() == 1 ? true : false;
+				%>
+				<tr>
+					<td class="big_td"><a
+						href="oneUser.jsp?email=<%=user.getEmail()%>"><%=user.getUsername()%></a>
+					</td>
+					<td class="small_td"><%=postDatabase.getUserPostsByEmail(user.getEmail()).size()%>
+					</td>
+					<td class="med_td"><%=user.getCompType()%></td>
+					<td class="med_td"><%=user.getTeamNumber()%></td>
+					<td class="big_td"><%=user.getTeamJob()%></td>
+					<td class="med_td"><%=user.getRookieTime()%></td>
+					<%
+						if (!admin) {
+					%>
+
+					<td class="med_td"><a
+						href="dbManageUsers.jsp?email=<%=user.getEmail()%>&will_admin=1">לא
+							מנהל</a></td>
+					<td class="small_td"><a
+						href="dbManageUsers.jsp?email=<%=user.getEmail()%>">מחק</a></td>
+					<td class="small_td"><a href="edit.jsp?username=<%=user.getUsername()%>">ערוך</a></td>
+
+					<%
+						} else if (!user.getUsername().equals("admin")) {
+					%>
+
+					<td class="med_td"><a
+						href="dbManageUsers.jsp?email=<%=user.getEmail()%>&will_admin=0">מנהל</a>
+					</td>
+					<td class="small_td"></td>
+					<td class="small_td"></td>
+
+					<%
+						} else {
+					%>
+					<td class="med_td">מנהל</td>
+					<td class="small_td"></td>
+					<td class="small_td"></td>
+
+					<%
+						}
+					%>
+				</tr>
+				<%
+					}
+					}
+				%>
+			</table>
+		</form>
 	</div>
 </body>
 </html>

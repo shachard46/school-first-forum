@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ page import="com.shachar.first.*"%>
+<%@ page import="java.util.*"%>
+<%@include file="dbMembers.jsp"%>
 <!DOCTYPE html>
-
+<%
+	User user = userDatabase.getUserByUsername(request.getParameter("username"));
+%>
 <html dir="rtl">
   <head>
     <title>FirstForum</title>
@@ -18,27 +23,27 @@ pageEncoding="UTF-8"%>
       <div class="s_r_container">
         <form
           name="register"
-          action="dbRegister.jsp"
+          action="dbEdit.jsp?old=<%=request.getParameter("username")%>"
           onsubmit="return checkAll();"
           method="post"
         >
           <label> שם משתמש</label>
-          <input type="text" name="username" placeholder="הכנס שם משתמש" />
+          <input type="text" name="username" value="<%=user.getUsername()%>" />
           <label>סיסמה</label>
-          <input type="password" name="password" placeholder="הכנס סיסמה" />
+          <input type="password" name="password" value="<%=user.getPassword()%>" />
           <label> אשר סיסמה</label>
           <input
             type="password"
             name="password_confirm"
-            placeholder="אשר סיסמה"
+            value="<%=user.getPassword()%>"
           />
           <label>כתובת דואר</label>
-          <input type="text" name="email" placeholder="הכנס כתובת דואר" />
+          <input type="text" name="email" value="<%=user.getEmail()%>" />
           <label>אשר כתובת דואר</label>
           <input
             type="text"
             name="email_confirm"
-            placeholder="הכנס כתובת דואר"
+            value="<%=user.getEmail()%>"
           />
           <label>סוג תחרות</label>
           <select name="compType">
@@ -47,7 +52,7 @@ pageEncoding="UTF-8"%>
             <option value="FLL">FLL</option>
           </select>
           <label>מספר קבוצה</label>
-          <input type="text" name="teamNumber" placeholder="הכנס מספר קבוצה" />
+          <input type="text" name="teamNumber" value="<%=user.getTeamNumber()%>" />
           <label>מדינה</label>
           <select name="country">
             <option value="בחר מיקום">בחר מיקום</option>
@@ -292,15 +297,15 @@ pageEncoding="UTF-8"%>
             <option value="תימן">תימן</option>
           </select>
           <label>תפקיד בקבוצה</label>
-          <input type="text" name="teamJob" placeholder="הכנס תפקיד בקבוצה" />
+          <input type="text" name="teamJob" value="<%=user.getTeamJob()%>" />
           <label>תאריך הצטרפות לקבוצה</label>
           <input
             type="date"
             name="rookieTime"
-            placeholder="הכנס תאריך הצטרפות לקבוצה"
+            value="<%=user.getRookieTime()%>"
           />
           <input type="reset" value="נקה" class="button clear-button" />
-          <input type="submit" value="היכנס" class="button send-button" />
+          <input type="submit" value="ערוך" class="button send-button" />
         </form>
       </div>
     </div>

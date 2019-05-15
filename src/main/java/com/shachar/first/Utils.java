@@ -3,10 +3,12 @@ package com.shachar.first;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
 import org.joda.time.Period;
+
 public class Utils {
 	public static double formatNumber(double num) {
 		DecimalFormat df = new DecimalFormat("#.##");
@@ -23,7 +25,7 @@ public class Utils {
 
 	public static Date getDate() {
 		return new Date();
-		
+
 	}
 
 	public static String getPeriod(Date date) {
@@ -52,7 +54,11 @@ public class Utils {
 	}
 
 	public static void main(String args[]) {
-		System.out.println(formatNumber(102.3434));
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(2019, 4, 7, 12, 36, 14);
+		Date date = new Date();
+		date.setTime(calendar.getTimeInMillis());
+		Period period = new Period(date.getTime(), (new Date()).getTime());
 	}
 
 }
