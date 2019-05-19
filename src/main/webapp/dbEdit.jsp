@@ -14,6 +14,7 @@
 				request.getParameter("rookieTime"),
 				0);
 		userDatabase.DeleteRow("username", request.getParameter("old"));
+		user.setLastSeenNow();
 		userDatabase.create(user);
 		response.sendRedirect("users.jsp");
 		

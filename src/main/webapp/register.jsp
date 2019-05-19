@@ -22,44 +22,76 @@ pageEncoding="UTF-8"%>
           onsubmit="return checkAll();"
           method="post"
         >
-          <label> שם משתמש</label>
-          <input type="text" name="username" placeholder="הכנס שם משתמש" />
-          <label>סיסמה</label>
-          <input type="password" name="password" placeholder="הכנס סיסמה" />
-          <label> אשר סיסמה</label>
+          <label name="שם משתמש">שם משתמש</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="הכנס שם משתמש"
+            onblur="checkUsername()"
+          />
+          <label name="סיסמה">סיסמה</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="הכנס סיסמה"
+            onblur="checkPassword()"
+          />
+          <label name="אשר סיסמה"> אשר סיסמה</label>
           <input
             type="password"
             name="password_confirm"
             placeholder="אשר סיסמה"
+            onblur="checkPassword()"
           />
-          <label>כתובת דואר</label>
-          <input type="text" name="email" placeholder="הכנס כתובת דואר" />
-          <label>אשר כתובת דואר</label>
+          <label name="כתובת דואר">כתובת דואר</label>
+          <input
+            type="text"
+            name="email"
+            placeholder="הכנס כתובת דואר"
+            onblur="checkEmail()"
+          />
+          <label name="אשר כתובת דואר">אשר כתובת דואר</label>
           <input
             type="text"
             name="email_confirm"
             placeholder="הכנס כתובת דואר"
+            onblur="checkEmail()"
           />
-          <label>סוג תחרות</label>
+          <label name="סוג תחרות">סוג תחרות</label>
           <select name="compType">
             <option value="FRC">FRC</option>
             <option value="FTC">FTC</option>
             <option value="FLL">FLL</option>
           </select>
-          <label>מספר קבוצה</label>
-          <input type="text" name="teamNumber" placeholder="הכנס מספר קבוצה" />
-          <label>מדינה</label>
+          <label name="מספר קבוצה">מספר קבוצה</label>
+          <input
+            type="text"
+            name="teamNumber"
+            placeholder="הכנס מספר קבוצה"
+            onblur="checkTeamNumber()"
+          />
+          <label name="מדינה">מדינה</label>
           <%@include file="countries.jsp" %>
-          <label>תפקיד בקבוצה</label>
-          <input type="text" name="teamJob" placeholder="הכנס תפקיד בקבוצה" />
-          <label>תאריך הצטרפות לקבוצה</label>
+          <label name="תפקיד בקבוצה">תפקיד בקבוצה</label>
+          <input
+            type="text"
+            name="teamJob"
+            placeholder="הכנס תפקיד בקבוצה"
+            onblur="checkTeamJob()"
+          />
+          <label name="תאריך הצטרפות לקבוצה">תאריך הצטרפות לקבוצה</label>
           <input
             type="date"
             name="rookieTime"
             placeholder="הכנס תאריך הצטרפות לקבוצה"
           />
           <input type="reset" value="נקה" class="button clear-button" />
-          <input type="submit" value="היכנס" class="button send-button" />
+          <input
+            type="submit"
+            value="היכנס"
+            class="button send-button"
+            onclick="checkAll()"
+          />
         </form>
       </div>
     </div>

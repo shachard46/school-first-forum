@@ -1,6 +1,18 @@
 function checkPassword() {
   var password = document.register.password.value;
   var password_confirm = document.register.password_confirm.value;
+  if (password.length <= 5) {
+    document.getElementsByName("סיסמה")[0].innerText =
+      "אורך הסיסמה חייב להיות ארוך מחמישה תווים";
+  } else if (password !== password_confirm) {
+    document.getElementsByName("סיסמה")[0].innerText =
+      "הסיסמה לא תואמת את האישור סיסמה";
+    document.getElementsByName("אשר סיסמה")[0].innerText =
+      "הסיסמה לא תואמת את האישור סיסמה";
+  } else {
+    document.getElementsByName("סיסמה")[0].innerText = "סיסמה";
+    document.getElementsByName("אשר סיסמה")[0].innerText = "אשר סיסמה";
+  }
   return password.length > 5 && password === password_confirm;
 }
 function checkUsername() {
@@ -9,10 +21,16 @@ function checkUsername() {
   for (var i = 0; i < username.length; i++) {
     letter = isNaN(username[i]) ? letter + 1 : letter;
   }
-  console.log(letter);
+  if (username.length == 0) {
+    document.getElementsByName("שם משתמש")[0].innerText = "מלא את שם המשתמש";
+  } else if (letter >= username.length) {
+    document.getElementsByName("שם משתמש")[0].innerText =
+      "שם המשתמש חייב להכיל גם מספרים";
+  } else {
+    document.getElementsByName("שם משתמש")[0].innerText = "שם משתמש";
+  }
   return letter < username.length && letter !== 0;
 }
-
 function checkSelect(list_name) {
   return document.register[list_name].value !== "בחר מיקום";
 }
@@ -20,15 +38,71 @@ function checkSelect(list_name) {
 function checkEmail() {
   var email = document.register.email.value;
   var email_confirm = document.register.email_confirm.value;
-  return email === email_confirm && email !== null && email.includes("@");
+  var shtrudelCount = 0;
+  for (var i in email) {
+    if (email[i] == "@") {
+      shtrudelCount++;
+    }
+  }
+  if (
+    email == null ||
+    shtrudelCount != 1 ||
+    email[0] == "." ||
+    email[0] == "@" ||
+    email[email.length - 1] == "." ||
+    email[email.length - 1] == "@"
+  ) {
+    document.getElementsByName("כתובת דואר")[0].innerText =
+      "כתובת דואר אינה תקינה";
+    return false;
+  } else if (email !== email_confirm) {
+    document.getElementsByName("כתובת דואר")[0].innerText =
+      "כתובת דואר אינה תואמת את אישור כתובת הדואר";
+    return false;
+  } else {
+    document.getElementsByName("כתובת דואר")[0].innerText = "כתובת דואר";
+  }
+  return true;
 }
-function checkText(fieldName) {
-  return document.register[fieldName].value !== "";
+function checkTeamNumber() {
+  var teamNumber = document.register.teamNumber.value;
+  if (isNaN(teamNumber)) {
+    document.getElementsByName("מספר קבוצה")[0].innerText =
+      "מספר הקבוצה חייב להכיל רק מספרים";
+    return false;
+  } else {
+    document.getElementsByName("מספר קבוצה")[0].innerText = "מספר קבוצה";
+  }
+  return true;
+}
+function checkTeamJob() {
+  var teamJob = document.register.teamJob.value;
+  var isnan = true;
+  for (var i in teamJob) {
+    if (teamJob[i] !== " ") isnan *= isNaN(teamJob[i]);
+  }
+  if (!isnan) {
+    document.getElementsByName("תפקיד בקבוצה")[0].innerText =
+      "התפקיד בקבוצה חייב להכיל רק אותיות";
+    return false;
+  } else {
+    document.getElementsByName("תפקיד בקבוצה")[0].innerText = "תפקיד בקבוצה";
+  }
+  return true;
 }
 function checkPostPostText(fieldName) {
   return document.postPost[fieldName].value !== "";
 }
 function checkAll() {
+  checkUsername();
+  checkPassword();
+  checkEmail();
+  checkPassword();
+  checkUsername();
+  checkSelect("compType");
+  checkSelect("country");
+  checkTeamNumber();
+  checkTeamJob();
   return (
     checkEmail() &&
     checkPassword() &&
