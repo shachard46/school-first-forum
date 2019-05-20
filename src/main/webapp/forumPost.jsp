@@ -34,7 +34,7 @@ user = userDatabase.getUserByEmail(post.getEmail()); %>
                 קבוצה מספר <%=user.getTeamNumber()%>
               </div>
               <div class="small_font">
-                צוות <%=user.getTeamJob()%>
+                <%=user.getTeamJob()%>
               </div>
             </div>
           </td>

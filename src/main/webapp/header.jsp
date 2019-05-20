@@ -42,7 +42,7 @@
 		<a href="dbClearPoll.jsp">אפס סקר</a>
 	</div>
 	<div class="menuBarOption users_option">
-		<a href="quiz.jsp">אפס חידון</a>
+		<a href="quiz.jsp">חידון</a>
 	</div>
 	<%
 		} else {

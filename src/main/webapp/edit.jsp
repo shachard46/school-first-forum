@@ -29,44 +29,44 @@ pageEncoding="UTF-8"%>
           onsubmit="return checkAll();"
           method="post"
         >
-          <label> שם משתמש</label>
+          <label name=" שם משתמש"> שם משתמש</label>
           <input type="text" name="username" value="<%=user.getUsername()%>" />
-          <label>סיסמה</label>
+          <label name="סיסמה">סיסמה</label>
           <input type="password" name="password" value="<%=user.getPassword()%>" />
-          <label> אשר סיסמה</label>
+          <label name=" אשר סיסמה"> אשר סיסמה</label>
           <input
             type="password"
             name="password_confirm"
             value="<%=user.getPassword()%>"
           />
-          <label>כתובת דואר</label>
+          <label name="כתובת דואר">כתובת דואר</label>
           <input type="text" name="email" value="<%=user.getEmail()%>" />
-          <label>אשר כתובת דואר</label>
+          <label name="אשר כתובת דואר">אשר כתובת דואר</label>
           <input
             type="text"
             name="email_confirm"
             value="<%=user.getEmail()%>"
           />
-          <label>סוג תחרות</label>
+          <label name="סוג תחרות">סוג תחרות</label>
           <select name="compType">
             <option value="FRC">FRC</option>
             <option value="FTC">FTC</option>
             <option value="FLL">FLL</option>
           </select>
-          <label>מספר קבוצה</label>
+          <label name="מספר קבוצה">מספר קבוצה</label>
           <input type="text" name="teamNumber" value="<%=user.getTeamNumber()%>" />
-          <label>מדינה</label>
+          <label name="מדינה">מדינה</label>
           <%@include file="countries.jsp" %>
-          <label>תפקיד בקבוצה</label>
+          <label name="תפקיד בקבוצה">תפקיד בקבוצה</label>
           <input type="text" name="teamJob" value="<%=user.getTeamJob()%>" />
-          <label>תאריך הצטרפות לקבוצה</label>
+          <label name="תאריך הצטרפות לקבוצה">תאריך הצטרפות לקבוצה</label>
           <input
             type="date"
             name="rookieTime"
             value="<%=user.getRookieTime()%>"
           />
           <input type="reset" value="נקה" class="button clear-button" />
-          <input type="submit" value="ערוך" class="button send-button" />
+          <input type="submit" value="ערוך" class="button send-button" onclick="checkAll()"/>
         </form>
       </div>
     </div>
