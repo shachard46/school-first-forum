@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 <%if(curUser != null){%>
 <!DOCTYPE html>
 <%
-	User user = userDatabase.getUserByUsername(request.getParameter("username"));
+	User user = DatabaseManager.get().getUserDatabase().getUserByUsername(request.getParameter("username"));
 %>
 <html dir="rtl">
   <head>
@@ -70,6 +70,7 @@ pageEncoding="UTF-8"%>
         </form>
       </div>
     </div>
+    <%@include file="footer.jsp"%>
   </body>
 </html>
 <%}else{

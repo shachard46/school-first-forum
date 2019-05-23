@@ -4,7 +4,6 @@
 	<%@ page import="static com.shachar.first.Utils.*"%>
 	
 <%
-		UserDatabase userDatabase = new UserDatabase();
 		User user = new User(				
 				request.getParameter("username"), 
 				request.getParameter("password"),
@@ -14,9 +13,9 @@
 				request.getParameter("country"),
 				request.getParameter("teamJob"),
 				request.getParameter("rookieTime"),
-				0);
-		userDatabase.create(user);
-		userDatabase.updateField("last_seen", "email", user.getEmail(), formatDatabaseDate(user.getLastSeen()));
+				false);
+		DatabaseManager.get().getUserDatabase().create(user);
+		DatabaseManager.get().getUserDatabase().updateField("last_seen", "email", user.getEmail(), formatDatabaseDate(user.getLastSeen()));
 		request.getSession().setAttribute("currentUserEmail", user.getEmail());
 		request.getSession().setAttribute("validUser", "right");
 		request.getSession().setAttribute("poll_results", "false");

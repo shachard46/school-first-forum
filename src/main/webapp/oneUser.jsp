@@ -9,7 +9,7 @@
 	User user = null;
 	String requestEmail = (String) request.getParameter("email");
 	if (requestEmail != null) {
-		user = userDatabase.getUserByEmail(requestEmail);
+		user = DatabaseManager.get().getUserDatabase().getUserByEmail(requestEmail);
 	}
 %>
 <html dir="rtl">
@@ -75,7 +75,7 @@
 					<div class="panel_header header">
 						מידע נוסף
 						<%
-						if ((curAdmin || user.getUsername().equals(curUser.getUsername()))
+						if ((curUser.getIsAdmin() || user.getUsername().equals(curUser.getUsername()))
 									&& !user.getUsername().equals("admin")) {
 					%>
 						<a href="edit.jsp?username=<%=user.getUsername()%>"
@@ -119,6 +119,7 @@
 			</tr>
 		</table>
 	</div>
+	<%@include file="footer.jsp"%>
 </body>
 </html>
 <%

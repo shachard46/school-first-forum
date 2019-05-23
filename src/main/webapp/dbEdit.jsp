@@ -4,7 +4,6 @@
 		<%@ page import="static com.shachar.first.Utils.*"%>
 	
 <%
-		UserDatabase userDatabase = new UserDatabase();
 		User user = new User(				
 				request.getParameter("username"), 
 				request.getParameter("password"),
@@ -14,10 +13,10 @@
 				request.getParameter("country"),
 				request.getParameter("teamJob"),
 				request.getParameter("rookieTime"),
-				0);
-		userDatabase.DeleteRow("username", request.getParameter("old"));
-		userDatabase.create(user);
-		userDatabase.updateField("last_seen", "email", user.getEmail(), formatDatabaseDate(user.getLastSeen()));
+				false);
+		DatabaseManager.get().getUserDatabase().DeleteRow("username", request.getParameter("old"));
+		DatabaseManager.get().getUserDatabase().create(user);
+		DatabaseManager.get().getUserDatabase().updateField("last_seen", "email", user.getEmail(), formatDatabaseDate(user.getLastSeen()));
 		response.sendRedirect("users.jsp");
 		
 %>

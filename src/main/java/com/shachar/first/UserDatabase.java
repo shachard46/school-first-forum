@@ -22,14 +22,14 @@ public class UserDatabase extends AbstractEntityDatabase<User> {
 						+ "(username, password, email, compType, teamNumber, country, teamJob, rookieTime, is_admin)"
 						+ " values('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d)",
 				entity.getUsername(), entity.getPassword(), entity.getEmail(), entity.getCompType(),
-				entity.getTeamNumber(), entity.getCountry(), entity.getTeamJob(), entity.getRookieTime(), entity.getIsAdmin());
+				entity.getTeamNumber(), entity.getCountry(), entity.getTeamJob(), entity.getRookieTime(), (entity.getIsAdmin() ? 1 : 0));
 	}
 	
 	@Override
 	protected User entityFromResultSet(ResultSet rs) throws SQLException {
 		User user = new User(rs.getString("username"), rs.getString("password"), rs.getString("email"),
 				rs.getString("compType"), rs.getString("teamNumber"), rs.getString("country"), rs.getString("teamJob"),
-				rs.getString("rookieTime"), rs.getInt("is_admin"));
+				rs.getString("rookieTime"), rs.getInt("is_admin") != 0);
 		user.setId(rs.getInt("id"));
 		user.setLastSeen(rs.getTimestamp("last_seen"));
 		return user;

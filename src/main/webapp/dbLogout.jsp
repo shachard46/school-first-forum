@@ -7,7 +7,7 @@
 
 <%
 	curUser.setLastSeenNow();
-	userDatabase.updateField("last_seen", "email", curUser.getEmail(), formatDatabaseDate(curUser.getLastSeen()));
+	DatabaseManager.get().getUserDatabase().updateField("last_seen", "email", curUser.getEmail(), formatDatabaseDate(curUser.getLastSeen()));
 	request.getSession().removeAttribute("currentUserEmail");
 	request.getSession().setAttribute("validUser", "disconnected");
 	response.sendRedirect("forumBase.jsp");

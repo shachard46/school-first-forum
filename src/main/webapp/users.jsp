@@ -8,9 +8,9 @@
 <%
 	List<User> users;
 	if (request.getQueryString() == null || request.getParameter("search").isEmpty()) {
-		users = userDatabase.getAllEntities();
+		users = DatabaseManager.get().getUserDatabase().getAllEntities();
 	} else {
-		users = userDatabase.getEntityByField((String) request.getParameter("field"),
+		users = DatabaseManager.get().getUserDatabase().getEntityByField((String) request.getParameter("field"),
 				(String) request.getParameter("search"));
 	}
 %>
@@ -28,22 +28,22 @@
 		<form action="users.jsp" method="get">
 			<table class="container">
 				<tr class="search">
-					<td colspan="<%=curAdmin ? 7 : 5%>"><input type="text"
+					<td colspan="<%=curUser.getIsAdmin() ? 7 : 5%>"><input type="text"
 						placeholder="חפש.." name="search" /></td>
-					<td rowspan="2" colspan="<%=curAdmin ? 2 : 1%>">
+					<td rowspan="2" colspan="<%=curUser.getIsAdmin() ? 2 : 1%>">
 						<button type="submit">
 							<img src="img/search.PNG" />
 						</button>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="<%=curAdmin ? 7 : 5%>"><select name="field"><option
+					<td colspan="<%=curUser.getIsAdmin() ? 7 : 5%>"><select name="field"><option
 								value="username">שם משתמש</option>
 							<option value="compType">סוג תחרות</option>
 							<option value="teamNumber">מספר קבוצה</option></select></td>
 				</tr>
 				<%
-					if (!curAdmin) {
+					if (!curUser.getIsAdmin()) {
 				%>
 				<tr>
 					<td class="header big_td">שם משתמש</td>
@@ -84,7 +84,7 @@
 				</tr>
 				<%
 					for (User user : users) {
-							boolean admin = user.getIsAdmin() == 1 ? true : false;
+							boolean admin = user.getIsAdmin();
 				%>
 				<tr>
 					<td class="big_td"><a
@@ -135,6 +135,7 @@
 			</table>
 		</form>
 	</div>
+	<%@include file="footer.jsp"%>
 </body>
 </html>
 <%}else{

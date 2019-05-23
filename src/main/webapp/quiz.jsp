@@ -53,5 +53,6 @@ import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%>
         </tr>
       </table>
     </form>
+    <%@include file="footer.jsp"%>
   </body>
 </html>

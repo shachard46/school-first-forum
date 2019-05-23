@@ -4,63 +4,64 @@
 <%@page import="static com.shachar.first.Utils.*"%>
 <%@page import="java.util.Map"%>
 <%@include file="dbMembers.jsp"%>
-<%if(curUser != null){%>
+<%
+	if (curUser != null) {
+%>
 <%
 	List<PollQuestion> pollQuestions = pollQuestionDatabase.getAllEntities();
 %>
 <!DOCTYPE html>
 <html dir="rtl">
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css" />
-	<script type="text/javascript" src="functions.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript" src="functions.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<%@include file="header.jsp"%>
-	<form action="dbPollAnswers.jsp" method="GET" accept-charset="UTF-8" name="poll" onsubmit="return checkAllPoll()">
+	<form action="dbPollAnswers.jsp" method="GET" accept-charset="UTF-8"
+		name="poll" onsubmit="return checkAllPoll()">
 		<table class="container poll_container">
 			<%
 				for (PollQuestion pollQuestion : pollQuestions) {
-					String name = pollQuestion.getName();
-					String id = pollQuestion.getId() + "";
+						String name = pollQuestion.getName();
+						String id = pollQuestion.getId() + "";
 			%>
 			<tr>
 				<%
 					if (request.getSession().getAttribute("poll_results").equals("false")) {
 				%>
-				<td><label><%=name%></label>
-				 <%
- 					for (String answer : pollQuestion.getAllAnswers()) {
-				%>
-					  <span class="answer"><input type="radio"
-						name="<%=id%>" value="<%=answer%>"><span
-						class="answer_text"> <%=answer%></span></span> <%
-					}
-				 %></td>
+				<td><label><%=name%></label> <%
+ 	for (String answer : pollQuestion.getAllAnswers()) {
+ %> <span class="answer"><input type="radio" name="<%=id%>"
+						value="<%=answer%>"><span class="answer_text"> <%=answer%></span></span>
+					<%
+						}
+					%></td>
 				<%
 					} else {
-							Map<String, Integer> answersCount = pollAnswerDatabase.getAnswerCounts(name);
-							int ansSum = sum(answersCount.values());
+								Map<String, Integer> answersCount = pollAnswerDatabase.getAnswerCounts(name);
+								int ansSum = sum(answersCount.values());
 				%>
 				<td><label><%=name%></label> <%
  	for (String answer : pollQuestion.getAllAnswers()) {
- 				Integer ansCount = answersCount.get(answer);
- 				double ratio = 0;
- 				if (ansCount != null) {
- 					ratio = (double) ansCount / ansSum;
- 				}
+ 					Integer ansCount = answersCount.get(answer);
+ 					double ratio = 0;
+ 					if (ansCount != null) {
+ 						ratio = (double) ansCount / ansSum;
+ 					}
  %>
 					<div class="answer"><%=answer%>
 						<hr class="answer_mess" width=<%=270 * ratio%>><%=formatNumber(ratio * 100)%>%
 					</div> <%
  	}
- 		}
+ 			}
  %>
 			</tr>
 			<%
 				}
-				if (request.getSession().getAttribute("poll_results").equals("false")) {
+					if (request.getSession().getAttribute("poll_results").equals("false")) {
 			%>
 
 			<tr>
@@ -73,11 +74,12 @@
 		</table>
 
 	</form>
-
+	<%@include file="footer.jsp"%>
 
 </body>
 </html>
-<%}else{
-	response.sendRedirect("signIn.jsp");
-}
+<%
+	} else {
+		response.sendRedirect("signIn.jsp");
+	}
 %>

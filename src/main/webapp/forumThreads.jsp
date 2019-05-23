@@ -60,7 +60,7 @@
 				<%
 					if (posts != null) {
 						for (Post post : posts) {
-							User user = userDatabase.getUserByEmail(post.getEmail());
+							User user = DatabaseManager.get().getUserDatabase().getUserByEmail(post.getEmail());
 				%>
 				<tr>
 					<td class="sub_topic"><a
@@ -77,5 +77,6 @@
 			</table>
 		</form>
 	</div>
+	<%@include file="footer.jsp"%>
 </body>
 </html>

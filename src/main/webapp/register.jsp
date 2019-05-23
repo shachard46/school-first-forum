@@ -95,5 +95,6 @@ pageEncoding="UTF-8"%>
         </form>
       </div>
     </div>
+    <%@include file="footer.jsp"%>
   </body>
 </html>

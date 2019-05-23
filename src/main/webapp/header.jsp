@@ -12,9 +12,8 @@
 <div class="menuBar">
 	<%
 		String email = (String) request.getSession().getAttribute("currentUserEmail");
-		UserDatabase userDatabase2 = new UserDatabase();
 		if (request.getSession().getAttribute("validUser").equals("right")
-				&& userDatabase2.getUserByEmail(email).getIsAdmin() == 0) {
+				&& !DatabaseManager.get().getUserDatabase().getUserByEmail(email).getIsAdmin()) {
 	%>
 	<a href='oneUser.jsp?email=<%=email%>' class='menuBarOption user_link'></a>
 	<div class='menuBarOption sign_up_in'>
@@ -30,7 +29,7 @@
 		}
 
 		else if (request.getSession().getAttribute("validUser").equals("right")
-				&& userDatabase2.getUserByEmail(email).getIsAdmin() == 1) {
+				&& DatabaseManager.get().getUserDatabase().getUserByEmail(email).getIsAdmin()) {
 	%>
 
 	<a href='oneUser.jsp?email=<%=email%>'><div

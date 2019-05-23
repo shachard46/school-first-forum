@@ -10,7 +10,6 @@
 
 		String ans = request.getParameter(String.valueOf(id));
 		PollAnswer pollAnswer = new PollAnswer(name, ans);
-		out.print(ans);
  		pollAnswerDatabase.create(pollAnswer); 
 	}
 	request.getSession().setAttribute("poll_results", "true");

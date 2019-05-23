@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <%
 	if (request.getParameter("will_admin") != null) {
-		userDatabase.updateField("is_admin", "email", (String) request.getParameter("email"),
+		DatabaseManager.get().getUserDatabase().updateField("is_admin", "email", (String) request.getParameter("email"),
 				Integer.parseInt(request.getParameter("will_admin")));
 	} else {
-		userDatabase.DeleteRow("email", (String) request.getParameter("email"));
+		DatabaseManager.get().getUserDatabase().DeleteRow("email", (String) request.getParameter("email"));
 	}
 	response.sendRedirect("users.jsp");
 %>

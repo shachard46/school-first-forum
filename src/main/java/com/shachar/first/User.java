@@ -15,10 +15,10 @@ public class User {
 	private String teamJob;
 	private String rookieTime;
 	private Date lastSeen;
-	private int isAdmin;
+	private boolean isAdmin;
 
 	public User(String username, String password, String email, String compType, String teamNumber, String country,
-			String teamJob, String rookieTime, int isAdmin) {
+			String teamJob, String rookieTime, boolean isAdmin) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
@@ -114,11 +114,11 @@ public class User {
 		this.lastSeen = lastSeen;
 	}
 
-	public int getIsAdmin() {
+	public boolean getIsAdmin() {
 		return isAdmin;
 	}
 
-	public void setIsAdmin(int isAdmin) {
+	public void setIsAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 }

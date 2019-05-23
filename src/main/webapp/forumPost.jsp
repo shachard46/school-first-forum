@@ -3,7 +3,7 @@ pageEncoding="UTF-8"%> <%@ page import="com.shachar.first.*"%> <%@ page
 import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%> <%
 Post post =
 postDatabase.getEntityById(Integer.parseInt(request.getParameter("id"))); User
-user = userDatabase.getUserByEmail(post.getEmail()); %>
+user = DatabaseManager.get().getUserDatabase().getUserByEmail(post.getEmail()); %>
 <html dir="rtl">
   <head>
     <title>FirstForum</title>
@@ -49,5 +49,6 @@ user = userDatabase.getUserByEmail(post.getEmail()); %>
         </tr>
       </table>
     </div>
+    <%@include file="footer.jsp"%>
   </body>
 </html>
