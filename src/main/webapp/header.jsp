@@ -12,37 +12,32 @@
 <div class="menuBar">
 	<%
 		String email = (String) request.getSession().getAttribute("currentUserEmail");
-		if (request.getSession().getAttribute("validUser").equals("right")
-				&& !DatabaseManager.get().getUserDatabase().getUserByEmail(email).getIsAdmin()) {
+		if (JSPUtils.getCurrentUser(session) != null
+				&& !JSPUtils.getCurrentUser(session).getIsAdmin()) {
 	%>
 	<a href='oneUser.jsp?email=<%=email%>' class='menuBarOption user_link'></a>
 	<div class='menuBarOption sign_up_in'>
-		<a href='dbLogout.jsp'>התנתק</a>
+		<a href='<%=request.getContextPath()%>?logout=true'>התנתק</a>
 	</div>
 	<div class="menuBarOption sign_up_in">
 		<a href="poll.jsp">סקר</a>
 	</div>
-	<div class="menuBarOption users_option">
-		<a href="quiz.jsp">חידון</a>
-	</div>
 	<%
 		}
 
-		else if (request.getSession().getAttribute("validUser").equals("right")
-				&& DatabaseManager.get().getUserDatabase().getUserByEmail(email).getIsAdmin()) {
+		else if (JSPUtils.getCurrentUser(session) != null
+				&& JSPUtils.getCurrentUser(session).getIsAdmin()) {
 	%>
 
 	<a href='oneUser.jsp?email=<%=email%>'><div
 			class='menuBarOption user_link'></div></a>
 	<div class='menuBarOption sign_up_in'>
-		<a href='dbLogout.jsp'>התנתק</a>
+		<a href='<%=request.getContextPath()%>?logout=true'>התנתק</a>
 	</div>
 	<div class="menuBarOption sign_up_in">
-		<a href="dbClearPoll.jsp">אפס סקר</a>
+		<a href="<%=request.getContextPath()%>?clearPoll=true">אפס סקר</a>
 	</div>
-	<div class="menuBarOption users_option">
-		<a href="quiz.jsp">חידון</a>
-	</div>
+
 	<%
 		} else {
 	%>
@@ -53,16 +48,12 @@
 	<div class="menuBarOption sign_up_in">
 		<a href="signIn.jsp">היכנס</a>
 	</div>
-	<div class="menuBarOption users_option">
-		<a href="quiz.jsp">חידון</a>
-	</div>
 	<%
 		}
 	%>
-
-	<%
-		if (request.getSession().getAttribute("validUser").equals("right")) {
-	%>
+	<div class="menuBarOption users_option">
+		<a href="quiz.jsp">חידון</a>
+	</div>
 	<div class="menuBarOption post_option">
 		<a href="postPost.jsp">פרסם פוסט</a>
 	</div>
@@ -74,24 +65,6 @@
 		<a href="users.jsp">משתמשים</a>
 	</div>
 
-	<%
-		}
-
-		else {
-	%>
-	<div class="menuBarOption post_option">
-		<a href="signIn.jsp">פרסם פוסט</a>
-	</div>
-
-	<div class="menuBarOption in_forum">
-		<a href="forumBase.jsp">פורום</a>
-	</div>
-	<div class="menuBarOption users_option">
-		<a href="signIn.jsp">משתמשים</a>
-	</div>
-	<%
-		}
-	%>
 	<div class="first-logo">
 		<div class="menuBarOption">
 			<a onclick="openFirstPage()"><img

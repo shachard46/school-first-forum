@@ -59,5 +59,9 @@ public class Utils {
 		Date date = new Date();
 		date.setTime(calendar.getTimeInMillis());
 	}
+	
+	public static boolean isEmptyOrNull(String s) {
+		return s == null || s.isEmpty(); 
+	}
 
 }

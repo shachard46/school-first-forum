@@ -4,6 +4,13 @@ pageEncoding="UTF-8"%>
 <%@ page import="com.shachar.first.*"%>
 <%@ page import="java.util.*"%>
 <%@include file="dbMembers.jsp"%>
+<%
+	JSPUtils.requiresLogin(request, response);
+	if(request.getMethod().equals("POST")){
+		JSPUtils.editUser(request);
+		response.sendRedirect("forumBase.jsp");
+	}
+%>
 <%if(curUser != null){%>
 <!DOCTYPE html>
 <%

@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%
+	if(request.getMethod().equals("POST")){
+    	JSPUtils.registerUser(request);
+    	response.sendRedirect("forumBase.jsp");
+	}
+%>
 <!DOCTYPE html>
 
 <html dir="rtl">
@@ -18,7 +24,7 @@ pageEncoding="UTF-8"%>
       <div class="s_r_container">
         <form
           name="register"
-          action="dbRegister.jsp"
+          action="register.jsp"
           onsubmit="return checkAll();"
           method="post"
         >

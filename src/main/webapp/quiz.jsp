@@ -3,7 +3,11 @@
 pageEncoding="UTF-8"%> <%@ page import="com.shachar.first.*"%> <%@ page
 import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%>
 <%
-	List<QuizQuestion> quizQuestions = quizQuestionDatabase.getAllEntities();
+	if(JSPUtils.logoutUser(request, response)){
+		return;
+	}
+	JSPUtils.clearPoll(request);
+	List<QuizQuestion> quizQuestions = DatabaseManager.get().getQuizQuestionDatabase().getAllEntities();
 %>
 <html dir="rtl">
   <head>

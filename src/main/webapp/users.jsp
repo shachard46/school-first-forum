@@ -4,10 +4,15 @@
 <%@ page import="com.shachar.first.*"%>
 <%@ page import="java.util.*"%>
 <%@include file="dbMembers.jsp"%>
-<%if(curUser != null){%>
-<%
+<%	
+	if(JSPUtils.logoutUser(request, response) || JSPUtils.requiresLogin(request, response)){
+		return;
+	}
+	if(request.getQueryString() != null && request.getQueryString().contains("will_admin")){
+		JSPUtils.toggleAdmin(request);
+	}
 	List<User> users;
-	if (request.getQueryString() == null || request.getParameter("search").isEmpty()) {
+	if (Utils.isEmptyOrNull(request.getParameter("search"))) {
 		users = DatabaseManager.get().getUserDatabase().getAllEntities();
 	} else {
 		users = DatabaseManager.get().getUserDatabase().getEntityByField((String) request.getParameter("field"),
@@ -60,7 +65,7 @@
 					<td class="big_td"><a
 						href="oneUser.jsp?email=<%=user.getEmail()%>"><%=user.getUsername()%></a>
 					</td>
-					<td class="small_td"><%=postDatabase.getUserPostsByEmail(user.getEmail()).size()%>
+					<td class="small_td"><%=DatabaseManager.get().getPostDatabase().getUserPostsByEmail(user.getEmail()).size()%>
 					</td>
 					<td class="med_td"><%=user.getCompType()%></td>
 					<td class="med_td"><%=user.getTeamNumber()%></td>
@@ -90,7 +95,7 @@
 					<td class="big_td"><a
 						href="oneUser.jsp?email=<%=user.getEmail()%>"><%=user.getUsername()%></a>
 					</td>
-					<td class="small_td"><%=postDatabase.getUserPostsByEmail(user.getEmail()).size()%>
+					<td class="small_td"><%=DatabaseManager.get().getPostDatabase().getUserPostsByEmail(user.getEmail()).size()%>
 					</td>
 					<td class="med_td"><%=user.getCompType()%></td>
 					<td class="med_td"><%=user.getTeamNumber()%></td>
@@ -101,7 +106,7 @@
 					%>
 
 					<td class="med_td"><a
-						href="dbManageUsers.jsp?email=<%=user.getEmail()%>&will_admin=1">לא
+						href="users.jsp?email=<%=user.getEmail()%>&will_admin=1">לא
 							מנהל</a></td>
 					<td class="small_td"><a
 						href="dbManageUsers.jsp?email=<%=user.getEmail()%>">מחק</a></td>
@@ -112,7 +117,7 @@
 					%>
 
 					<td class="med_td"><a
-						href="dbManageUsers.jsp?email=<%=user.getEmail()%>&will_admin=0">מנהל</a>
+						href="users.jsp?email=<%=user.getEmail()%>&will_admin=0">מנהל</a>
 					</td>
 					<td class="small_td"></td>
 					<td class="small_td"></td>
@@ -138,7 +143,3 @@
 	<%@include file="footer.jsp"%>
 </body>
 </html>
-<%}else{
-	response.sendRedirect("signIn.jsp");
-}
-%>

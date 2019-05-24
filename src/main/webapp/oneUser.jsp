@@ -4,8 +4,11 @@
 <!DOCTYPE html>
 <%@include file="dbMembers.jsp"%>
 <%@page import="static com.shachar.first.Utils.*"%>
-<%if(curUser != null){%>
 <%
+	if(JSPUtils.logoutUser(request, response) || JSPUtils.requiresLogin(request, response)){
+		return;
+	}
+	JSPUtils.clearPoll(request);
 	User user = null;
 	String requestEmail = (String) request.getParameter("email");
 	if (requestEmail != null) {
@@ -112,7 +115,7 @@
 
 						<div class="small_font">
 							פוסטים:
-							<%=postDatabase.getUserPostsByEmail(user.getEmail()).size()%>
+							<%=DatabaseManager.get().getPostDatabase().getUserPostsByEmail(user.getEmail()).size()%>
 						</div>
 					</div>
 				</td>
@@ -122,8 +125,3 @@
 	<%@include file="footer.jsp"%>
 </body>
 </html>
-<%
-	} else {
-		response.sendRedirect("signIn.jsp");
-	}
-%>

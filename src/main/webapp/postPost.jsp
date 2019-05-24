@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ page import="com.shachar.first.*"%> <%@include
 file="dbMembers.jsp"%>
-<%if(curUser != null){%>
-
+<%
+	if(JSPUtils.logoutUser(request, response) || JSPUtils.requiresLogin(request, response)){
+		return;
+	}
+	JSPUtils.clearPoll(request);
+	if(request.getMethod().equals("POST")){
+		JSPUtils.postPost(request);
+		response.sendRedirect("forumBase.jsp");
+	}
+%>
 <!DOCTYPE html>
 <html dir="rtl">
   <head>
@@ -16,7 +24,7 @@ file="dbMembers.jsp"%>
 
     <form
       name="postPost"
-      action="dbPost.jsp"
+      action="postPost.jsp"
       method="post"
       onsubmit="return checkPostPost()"
     >
@@ -41,7 +49,7 @@ file="dbMembers.jsp"%>
         <tr>
           <td>
             <select class="post_select" name="postTopicName">
-              <% for (Topic topic : topicDatabase.getAllSubTopics()) { %>
+              <% for (Topic topic : DatabaseManager.get().getTopicDatabase().getAllSubTopics()) { %>
               <option value="<%=topic.getName()%>"><%=topic.getName()%></option>
               <% } %>
             </select>
@@ -53,7 +61,3 @@ file="dbMembers.jsp"%>
     <%@include file="footer.jsp"%>
   </body>
 </html>
-<%}else{
-	response.sendRedirect("signIn.jsp");
-}
-%>

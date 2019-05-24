@@ -6,7 +6,11 @@
 <%@include file="dbMembers.jsp"%>
 
 <%
-	List<Topic> parentTopics = topicDatabase.getAllParentTopics();
+	if(JSPUtils.logoutUser(request, response)){
+		return;
+	}
+	JSPUtils.clearPoll(request);
+	List<Topic> parentTopics = DatabaseManager.get().getTopicDatabase().getAllParentTopics();
 %>
 
 <html dir="rtl">
@@ -44,16 +48,16 @@
 					<td colspan="3" class="header"><%=parentTopic.getName()%></td>
 				</tr>
 				<%
-					List<Topic> subTopics = topicDatabase.getSubTopics(parentTopic.getId());
+					List<Topic> subTopics = DatabaseManager.get().getTopicDatabase().getSubTopics(parentTopic.getId());
 							for (Topic subTopic : subTopics) {
-								int posts = postDatabase.getPostsByTopic(subTopic.getName()).isEmpty() ? 0
-										: postDatabase.getPostsByTopic(subTopic.getName()).size();
-								String postName = postDatabase.getPostsByTopic(subTopic.getName()).isEmpty() ? "אין פוסטים"
-										: postDatabase.getPostsByTopic(subTopic.getName())
-												.get(postDatabase.getPostsByTopic(subTopic.getName()).size() - 1).getPostName();
-								int id = postDatabase.getPostsByTopic(subTopic.getName()).isEmpty() ? 0
-										: postDatabase.getPostsByTopic(subTopic.getName())
-												.get(postDatabase.getPostsByTopic(subTopic.getName()).size() - 1).getId();
+								int posts = DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).isEmpty() ? 0
+										: DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).size();
+								String postName = DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).isEmpty() ? "אין פוסטים"
+										: DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName())
+												.get(DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).size() - 1).getPostName();
+								int id = DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).isEmpty() ? 0
+										: DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName())
+												.get(DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).size() - 1).getId();
 				%>
 				<tr>
 					<td class="sub_topic"><a
@@ -79,16 +83,16 @@
 				%>
 				<%
 					} else {
-						for (Topic subTopic : topicDatabase.getEntityByField("name",
+						for (Topic subTopic : DatabaseManager.get().getTopicDatabase().getEntityByField("name",
 								(String) request.getParameter("search"))) {
-							int posts = postDatabase.getPostsByTopic(subTopic.getName()).isEmpty() ? 0
-									: postDatabase.getPostsByTopic(subTopic.getName()).size();
-							String postName = postDatabase.getPostsByTopic(subTopic.getName()).isEmpty() ? "אין פוסטים"
-									: postDatabase.getPostsByTopic(subTopic.getName())
-											.get(postDatabase.getPostsByTopic(subTopic.getName()).size() - 1).getPostName();
-							int id = postDatabase.getPostsByTopic(subTopic.getName()).isEmpty() ? 0
-									: postDatabase.getPostsByTopic(subTopic.getName())
-											.get(postDatabase.getPostsByTopic(subTopic.getName()).size() - 1).getId();
+							int posts = DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).isEmpty() ? 0
+									: DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).size();
+							String postName = DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).isEmpty() ? "אין פוסטים"
+									: DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName())
+											.get(DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).size() - 1).getPostName();
+							int id = DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).isEmpty() ? 0
+									: DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName())
+											.get(DatabaseManager.get().getPostDatabase().getPostsByTopic(subTopic.getName()).size() - 1).getId();
 				%>
 				<tr>
 					<td class="sub_topic"><a

@@ -6,17 +6,20 @@
 <%@include file="dbMembers.jsp"%>
 
 <%
-	
+	if(JSPUtils.logoutUser(request, response)){
+		return;
+	}
+	JSPUtils.clearPoll(request);
 	Topic topic;
 	List<Post> posts;
 	if (!request.getQueryString().contains("search") || request.getParameter("search").isEmpty()) {
 		session.setAttribute("forumThread", request.getParameter("topic_id"));
-		topic = topicDatabase.getEntityById(Integer.parseInt(request.getParameter("topic_id")));
-		posts = postDatabase.getPostsByTopic(topic.getName());
+		topic = DatabaseManager.get().getTopicDatabase().getEntityById(Integer.parseInt(request.getParameter("topic_id")));
+		posts = DatabaseManager.get().getPostDatabase().getPostsByTopic(topic.getName());
 	} else {
 		Integer id = Integer.parseInt((String)session.getAttribute("forumThread"));
-		topic = topicDatabase.getEntityById(id);
-		posts = postDatabase.getEntityByTwoFields((String) request.getParameter("field"),
+		topic = DatabaseManager.get().getTopicDatabase().getEntityById(id);
+		posts = DatabaseManager.get().getPostDatabase().getEntityByTwoFields((String) request.getParameter("field"),
 				(String) request.getParameter("search"), "post_topic_name", topic.getName());
 	}
 %>

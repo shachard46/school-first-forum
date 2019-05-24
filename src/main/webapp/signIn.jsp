@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	if(request.getMethod().equals("POST")){
+		JSPUtils.signIn(request, response);
+	}
+%>
 <html dir="rtl">
 <head>
 <title>FirstForum</title>
@@ -11,7 +16,7 @@
 	<div class="s_r_root">
 		<div class="first-logo"></div>
 		<div class="s_r_container">
-			<form action="dbSignin.jsp" method="post">
+			<form action="signIn.jsp" method="post">
 				<%
 					if (request.getSession().getAttribute("validUser").equals("right")
 							|| request.getSession().getAttribute("validUser").equals("disconnected")) {

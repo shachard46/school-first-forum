@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	if(JSPUtils.logoutUser(request, response) || JSPUtils.requiresLogin(request, response)){
+		return;
+	}
+	JSPUtils.clearPoll(request);
+%>
   <html dir="rtl">
     <head>
     <link rel="stylesheet" type="text/css" href="style.css" />

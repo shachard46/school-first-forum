@@ -9,11 +9,5 @@
 		request.getSession().setAttribute("validUser", "disconnected");
 	}
 
-	PostDatabase postDatabase = new PostDatabase();
-	TopicDatabase topicDatabase = new TopicDatabase();
-	PollQuestionDatabase pollQuestionDatabase = new PollQuestionDatabase();
-	PollAnswerDatabase pollAnswerDatabase = new PollAnswerDatabase();
-	QuizQuestionDatabase quizQuestionDatabase = new QuizQuestionDatabase();
-
 	User curUser = JSPUtils.getCurrentUser(session);
 %>

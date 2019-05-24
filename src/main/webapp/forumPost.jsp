@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ page import="com.shachar.first.*"%> <%@ page
-import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%> <%
-Post post =
-postDatabase.getEntityById(Integer.parseInt(request.getParameter("id"))); User
-user = DatabaseManager.get().getUserDatabase().getUserByEmail(post.getEmail()); %>
+import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%> 
+<%
+	if(JSPUtils.logoutUser(request, response)){
+		return;
+	}
+	JSPUtils.clearPoll(request);
+	Post post =
+	DatabaseManager.get().getPostDatabase().getEntityById(Integer.parseInt(request.getParameter("id"))); User
+	user = DatabaseManager.get().getUserDatabase().getUserByEmail(post.getEmail()); 
+%>
 <html dir="rtl">
   <head>
     <title>FirstForum</title>
