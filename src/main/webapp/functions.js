@@ -1,6 +1,7 @@
 function checkPassword() {
   var password = document.register.password.value;
   var password_confirm = document.register.password_confirm.value;
+  document.getElementsByName("סיסמה")[0].style.color = "red";
   if (password.length <= 5) {
     document.getElementsByName("סיסמה")[0].innerText =
       "אורך הסיסמה חייב להיות ארוך מחמישה תווים";
@@ -10,6 +11,7 @@ function checkPassword() {
     document.getElementsByName("אשר סיסמה")[0].innerText =
       "הסיסמה לא תואמת את האישור סיסמה";
   } else {
+    document.getElementsByName("סיסמה")[0].style.color = "black";
     document.getElementsByName("סיסמה")[0].innerText = "סיסמה";
     document.getElementsByName("אשר סיסמה")[0].innerText = "אשר סיסמה";
   }
@@ -18,6 +20,8 @@ function checkPassword() {
 function checkUsername() {
   var username = document.register.username.value;
   var letter = 0;
+  document.getElementsByName("שם משתמש")[0].style.color = "red";
+
   for (var i = 0; i < username.length; i++) {
     letter = isNaN(username[i]) ? letter + 1 : letter;
   }
@@ -27,6 +31,7 @@ function checkUsername() {
     document.getElementsByName("שם משתמש")[0].innerText =
       "שם המשתמש חייב להכיל גם מספרים";
   } else {
+    document.getElementsByName("שם משתמש")[0].style.color = "black";
     document.getElementsByName("שם משתמש")[0].innerText = "שם משתמש";
   }
   return letter < username.length && letter !== 0;
@@ -38,6 +43,7 @@ function checkSelect(list_name) {
 function checkEmail() {
   var email = document.register.email.value;
   var email_confirm = document.register.email_confirm.value;
+  document.getElementsByName("כתובת דואר")[0].red = "red";
   var shtrudelCount = 0;
   for (var i in email) {
     if (email[i] == "@") {
@@ -60,17 +66,20 @@ function checkEmail() {
       "כתובת דואר אינה תואמת את אישור כתובת הדואר";
     return false;
   } else {
+    document.getElementsByName("כתובת דואר")[0].red = "black";
     document.getElementsByName("כתובת דואר")[0].innerText = "כתובת דואר";
   }
   return true;
 }
 function checkTeamNumber() {
   var teamNumber = document.register.teamNumber.value;
+  document.getElementsByName("מספר קבוצה")[0].style.color = "red";
   if (isNaN(teamNumber)) {
     document.getElementsByName("מספר קבוצה")[0].innerText =
       "מספר הקבוצה חייב להכיל רק מספרים";
     return false;
   } else {
+    document.getElementsByName("מספר קבוצה")[0].style.color = "black";
     document.getElementsByName("מספר קבוצה")[0].innerText = "מספר קבוצה";
   }
   return true;
@@ -78,6 +87,7 @@ function checkTeamNumber() {
 function checkTeamJob() {
   var teamJob = document.register.teamJob.value;
   var isnan = true;
+  document.getElementsByName("תפקיד בקבוצה")[0].style.color = "red";
   for (var i in teamJob) {
     if (teamJob[i] !== " ") isnan *= isNaN(teamJob[i]);
   }
@@ -86,6 +96,7 @@ function checkTeamJob() {
       "התפקיד בקבוצה חייב להכיל רק אותיות";
     return false;
   } else {
+    document.getElementsByName("תפקיד בקבוצה")[0].style.color = "black";
     document.getElementsByName("תפקיד בקבוצה")[0].innerText = "תפקיד בקבוצה";
   }
   return true;

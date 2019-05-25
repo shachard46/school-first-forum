@@ -54,7 +54,7 @@ public class JSPUtils {
 				Utils.formatDatabaseDate(user.getLastSeen()));
 	}
 
-	public static void registerUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public static boolean registerUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		User user = new User(request.getParameter("username"), request.getParameter("password"),
 				request.getParameter("email"), request.getParameter("compType"), request.getParameter("teamNumber"),
 				request.getParameter("country"), request.getParameter("teamJob"), request.getParameter("rookieTime"),
@@ -65,12 +65,11 @@ public class JSPUtils {
 			DatabaseManager.get().getUserDatabase().updateField("last_seen", "email", user.getEmail(),
 					Utils.formatDatabaseDate(user.getLastSeen()));
 			request.getSession().setAttribute("currentUserEmail", user.getEmail());
-
 			request.getSession().setAttribute("poll_results", "false");
-		} else {
-
-			response.sendRedirect("register.jsp");
+	    	response.sendRedirect("forumBase.jsp");
+	    	return true;
 		}
+		return false;
 	}
 
 	public static boolean logoutUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -80,7 +79,6 @@ public class JSPUtils {
 			DatabaseManager.get().getUserDatabase().updateField("last_seen", "email", curUser.getEmail(),
 					Utils.formatDatabaseDate(curUser.getLastSeen()));
 			request.getSession().removeAttribute("currentUserEmail");
-
 			response.sendRedirect("signIn.jsp");
 			return true;
 		}
@@ -139,17 +137,14 @@ public class JSPUtils {
 			if (user.getPassword().equals(request.getParameter("password"))) {
 				request.getSession().removeAttribute("currentUserEmail");
 				request.getSession().setAttribute("currentUserEmail", user.getEmail());
-
 				request.getSession().setAttribute("poll_results", "false");
 				DatabaseManager.get().getUserDatabase().updateField("last_seen", "email",
 						(String) request.getSession().getAttribute("currentUserEmail"), "1970-1-1 00:00:00");
 				response.sendRedirect("forumBase.jsp");
 			} else {
-
 				response.sendRedirect("signIn.jsp");
 			}
 		} else {
-
 			response.sendRedirect("signIn.jsp");
 		}
 	}
