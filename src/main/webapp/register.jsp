@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%
+	String errorMessage = null;
 	if(request.getMethod().equals("POST")){
-    	JSPUtils.registerUser(request, response);
-    	response.sendRedirect("forumBase.jsp");
+    	if(JSPUtils.registerUser(request, response)){
+    		return;
+    	}else{
+    		errorMessage = "אימייל או שם משתמש כבר קיימים במערכת...";
+    	}
 	}
 %>
 <!DOCTYPE html>
@@ -27,7 +31,9 @@ pageEncoding="UTF-8"%>
           action="register.jsp"
           onsubmit="return checkAll();"
           method="post"
-        >
+        ><%if(!Utils.isEmptyOrNull(errorMessage)){%>
+          <%= errorMessage %><br>
+          <%} %>
           <label name="שם משתמש">שם משתמש</label>
           <input
             type="text"
