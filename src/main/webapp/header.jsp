@@ -3,12 +3,6 @@
 <%@ page import="com.shachar.first.*"%>
 <!DOCTYPE html>
 
-<%
-	if (request.getSession().getAttribute("validUser") == null) {
-		request.getSession().setAttribute("validUser", "disconnected");
-	}
-%>
-
 <div class="menuBar">
 	<%
 		String email = (String) request.getSession().getAttribute("currentUserEmail");
@@ -35,7 +29,7 @@
 		<a href='<%=request.getContextPath()%>?logout=true'>התנתק</a>
 	</div>
 	<div class="menuBarOption sign_up_in">
-		<a href="<%=request.getContextPath()%>?clearPoll=true">אפס סקר</a>
+		<a href="clearPoll.jsp">אפס סקר</a>
 	</div>
 
 	<%

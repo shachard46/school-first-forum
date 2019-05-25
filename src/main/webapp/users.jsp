@@ -11,6 +11,9 @@
 	if(request.getQueryString() != null && request.getQueryString().contains("will_admin")){
 		JSPUtils.toggleAdmin(request);
 	}
+	if(request.getQueryString() != null && !request.getQueryString().contains("will_admin")){
+		DatabaseManager.get().getUserDatabase().deleteEntity("email", (String) request.getParameter("email"));
+	}
 	List<User> users;
 	if (Utils.isEmptyOrNull(request.getParameter("search"))) {
 		users = DatabaseManager.get().getUserDatabase().getAllEntities();
@@ -109,7 +112,7 @@
 						href="users.jsp?email=<%=user.getEmail()%>&will_admin=1">לא
 							מנהל</a></td>
 					<td class="small_td"><a
-						href="dbManageUsers.jsp?email=<%=user.getEmail()%>">מחק</a></td>
+						href="users.jsp?email=<%=user.getEmail()%>">מחק</a></td>
 					<td class="small_td"><a href="edit.jsp?username=<%=user.getUsername()%>">ערוך</a></td>
 
 					<%

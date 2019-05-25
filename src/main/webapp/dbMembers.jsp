@@ -5,9 +5,5 @@
 
 <!DOCTYPE html>
 <%
-	if (request.getSession().getAttribute("validUser") == null) {
-		request.getSession().setAttribute("validUser", "disconnected");
-	}
-
 	User curUser = JSPUtils.getCurrentUser(session);
 %>

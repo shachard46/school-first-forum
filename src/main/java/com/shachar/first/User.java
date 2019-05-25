@@ -121,4 +121,12 @@ public class User {
 	public void setIsAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) return false;
+		if(!(obj instanceof User)) return false;
+		User theUser = (User)obj;
+		return theUser.username.equals(username);
+	} 
 }

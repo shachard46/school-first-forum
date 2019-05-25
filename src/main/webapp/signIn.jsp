@@ -18,8 +18,7 @@
 		<div class="s_r_container">
 			<form action="signIn.jsp" method="post">
 				<%
-					if (request.getSession().getAttribute("validUser").equals("right")
-							|| request.getSession().getAttribute("validUser").equals("disconnected")) {
+					if (JSPUtils.getCurrentUser(session) != null){
 				%>
 					<label> שם משתמש</label> 
 					<input type='text' name='username' placeholder='הכנס שם משתמש' />

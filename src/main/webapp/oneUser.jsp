@@ -8,7 +8,6 @@
 	if(JSPUtils.logoutUser(request, response) || JSPUtils.requiresLogin(request, response)){
 		return;
 	}
-	JSPUtils.clearPoll(request);
 	User user = null;
 	String requestEmail = (String) request.getParameter("email");
 	if (requestEmail != null) {

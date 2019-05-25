@@ -69,7 +69,7 @@ public abstract class AbstractEntityDatabase<EntityType> {
 		}
 	}
 
-	public void DeleteRow(String unique, String uniqueValue) {
+	public void deleteEntity(String unique, String uniqueValue) {
 		Connection connection = getConnection();
 		Statement st = null;
 		try {

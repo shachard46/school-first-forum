@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 	JSPUtils.requiresLogin(request, response);
 	if(request.getMethod().equals("POST")){
 		JSPUtils.editUser(request);
-		response.sendRedirect("forumBase.jsp");
+		response.sendRedirect("users.jsp");
 	}
 %>
 <%if(curUser != null){%>
@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
       <div class="s_r_container">
         <form
           name="register"
-          action="dbEdit.jsp?old=<%=request.getParameter("username")%>"
+          action="edit.jsp?old=<%=request.getParameter("username")%>"
           onsubmit="return checkAll();"
           method="post"
         >

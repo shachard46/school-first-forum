@@ -9,7 +9,6 @@
 	if(JSPUtils.logoutUser(request, response)){
 		return;
 	}
-	JSPUtils.clearPoll(request);
 	List<Topic> parentTopics = DatabaseManager.get().getTopicDatabase().getAllParentTopics();
 %>
 
@@ -23,7 +22,7 @@
 	<%@include file="header.jsp"%>
 
 	<div class="big_container">
-		<form action="forumBase.jsp" method="get">
+		<form action="forumBase.jsp" method="post">
 			<table class="container">
 
 				<tr class="search">
@@ -41,7 +40,7 @@
 					<td class="post_amount header">מספר פוסטים</td>
 				</tr>
 				<%
-					if (request.getQueryString() == null || request.getParameter("search").isEmpty()) {
+					if (Utils.isEmptyOrNull(request.getParameter("search"))) {
 						for (Topic parentTopic : parentTopics) {
 				%>
 				<tr>

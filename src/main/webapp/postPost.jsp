@@ -5,7 +5,6 @@ file="dbMembers.jsp"%>
 	if(JSPUtils.logoutUser(request, response) || JSPUtils.requiresLogin(request, response)){
 		return;
 	}
-	JSPUtils.clearPoll(request);
 	if(request.getMethod().equals("POST")){
 		JSPUtils.postPost(request);
 		response.sendRedirect("forumBase.jsp");

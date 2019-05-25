@@ -9,7 +9,6 @@
 	if(JSPUtils.logoutUser(request, response)){
 		return;
 	}
-	JSPUtils.clearPoll(request);
 	Topic topic;
 	List<Post> posts;
 	if (!request.getQueryString().contains("search") || request.getParameter("search").isEmpty()) {

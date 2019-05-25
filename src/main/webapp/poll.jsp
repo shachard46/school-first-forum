@@ -13,7 +13,6 @@
 		JSPUtils.addPollAnswer(request);
 		response.sendRedirect("poll.jsp");
 	}
-	JSPUtils.clearPoll(request);
 	List<PollQuestion> pollQuestions = DatabaseManager.get().getPollQuestionDatabase().getAllEntities();
 %>
 <!DOCTYPE html>

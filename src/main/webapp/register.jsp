@@ -2,7 +2,7 @@
 pageEncoding="UTF-8"%>
 <%
 	if(request.getMethod().equals("POST")){
-    	JSPUtils.registerUser(request);
+    	JSPUtils.registerUser(request, response);
     	response.sendRedirect("forumBase.jsp");
 	}
 %>

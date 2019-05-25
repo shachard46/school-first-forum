@@ -6,7 +6,6 @@ import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%>
 	if(JSPUtils.logoutUser(request, response)){
 		return;
 	}
-	JSPUtils.clearPoll(request);
 	List<QuizQuestion> quizQuestions = DatabaseManager.get().getQuizQuestionDatabase().getAllEntities();
 %>
 <html dir="rtl">
