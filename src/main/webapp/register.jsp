@@ -39,35 +39,35 @@ pageEncoding="UTF-8"%>
             type="text"
             name="username"
             placeholder="הכנס שם משתמש"
-            onblur="checkUsername()"
+            onkeyup="checkUsername()"
           />
           <label name="סיסמה">סיסמה</label>
           <input
             type="password"
             name="password"
             placeholder="הכנס סיסמה"
-            onblur="checkPassword()"
+            onkeyup="checkPassword()"
           />
           <label name="אשר סיסמה"> אשר סיסמה</label>
           <input
             type="password"
             name="password_confirm"
             placeholder="אשר סיסמה"
-            onblur="checkPassword()"
+            onkeyup="checkPassword()"
           />
           <label name="כתובת דואר">כתובת דואר</label>
           <input
             type="text"
             name="email"
             placeholder="הכנס כתובת דואר"
-            onblur="checkEmail()"
+            onkeyup="checkEmail()"
           />
           <label name="אשר כתובת דואר">אשר כתובת דואר</label>
           <input
             type="text"
             name="email_confirm"
             placeholder="הכנס כתובת דואר"
-            onblur="checkEmail()"
+            onkeyup="checkEmail()"
           />
           <label name="סוג תחרות">סוג תחרות</label>
           <select name="compType">
@@ -80,7 +80,7 @@ pageEncoding="UTF-8"%>
             type="text"
             name="teamNumber"
             placeholder="הכנס מספר קבוצה"
-            onblur="checkTeamNumber()"
+            onkeyup="checkTeamNumber()"
           />
           <label name="מדינה">מדינה</label>
           <%@include file="countries.jsp" %>
@@ -89,7 +89,7 @@ pageEncoding="UTF-8"%>
             type="text"
             name="teamJob"
             placeholder="הכנס תפקיד בקבוצה"
-            onblur="checkTeamJob()"
+            onkeyup="checkTeamJob()"
           />
           <label name="תאריך הצטרפות לקבוצה">תאריך הצטרפות לקבוצה</label>
           <input
