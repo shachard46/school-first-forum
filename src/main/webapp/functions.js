@@ -43,7 +43,9 @@ function checkSelect(list_name) {
 function checkEmail() {
   var email = document.register.email.value;
   var email_confirm = document.register.email_confirm.value;
-  document.getElementsByName("כתובת דואר")[0].red = "red";
+  document.getElementsByName("כתובת דואר")[0].style.color = "red";
+  document.getElementsByName("אשר כתובת דואר")[0].style.color = "red";
+
   var shtrudelCount = 0;
   for (var i in email) {
     if (email[i] == "@") {
@@ -64,9 +66,13 @@ function checkEmail() {
   } else if (email !== email_confirm) {
     document.getElementsByName("כתובת דואר")[0].innerText =
       "כתובת דואר אינה תואמת את אישור כתובת הדואר";
+    document.getElementsByName("אשר כתובת דואר")[0].innerText =
+      "כתובת דואר אינה תואמת את אישור כתובת הדואר";
     return false;
   } else {
-    document.getElementsByName("כתובת דואר")[0].red = "black";
+    document.getElementsByName("כתובת דואר")[0].style.color = "black";
+    document.getElementsByName("אשר כתובת דואר")[0].style.color = "black";
+
     document.getElementsByName("כתובת דואר")[0].innerText = "כתובת דואר";
   }
   return true;
