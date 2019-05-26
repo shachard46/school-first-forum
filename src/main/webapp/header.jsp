@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 
 <div class="menuBar">
+<script type="text/javascript" src="functions.js"></script>
 	<%
 		String email = (String) request.getSession().getAttribute("currentUserEmail");
 		if (JSPUtils.getCurrentUser(session) != null

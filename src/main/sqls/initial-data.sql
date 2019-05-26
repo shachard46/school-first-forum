@@ -39,11 +39,11 @@ INSERT INTO poll_questions(name, ans_1, ans_2, ans_3, ans_4) values('האם את
 
 
 INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values('question', 'ans1', 'ans2', 'ans3', 'ans4');
-INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
-INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
-INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
-INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
-INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values('מיהי הקבוצה בעלת הכי הרבה אליפויות עולם?', '254 - The Cheesy Poofs', '1114 - Simbotics', '254 ו71 בתיקו 4', '71 - Team Hammond');
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values('מיהי הקבוצה שעלתה הכי הרבה פעמים לאיינשטיין?', '217 - Thunder Chickens', '254 - the Cheesy Poofs', '2630 - Thunderbolts', '2056 - OP Robotics');
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values('מהו הדיסטריקט הגדול בעולם?' ,'אונטריו', 'ישראל', 'מישיגן', 'ניו אינגלנד');
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values('מיהי הקבוצה הישראלי הראשונה באיינשטיין', '1690 - Orbit', '1574 - Miscar', '2630 - Thunderbolts', '3339 - BumbleB');
+INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values('באיזה שנה הוקמה פירסט?', '1995', '2001', '1000', '2017');
 INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
 INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();
 INSERT INTO quiz_questions(name, ans_1, ans_2, ans_3, ans_4) values();

@@ -37,14 +37,15 @@ pageEncoding="UTF-8"%>
           method="post"
         >
           <label name=" שם משתמש"> שם משתמש</label>
-          <input type="text" name="username" value="<%=user.getUsername()%>" />
+          <input type="text" name="username" value="<%=user.getUsername()%>" onkeyup="checkUsername()"/>
           <label name="סיסמה">סיסמה</label>
-          <input type="password" name="password" value="<%=user.getPassword()%>" />
+          <input type="password" name="password" value="<%=user.getPassword()%>" onkeyup="checkPassword()"/>
           <label name=" אשר סיסמה"> אשר סיסמה</label>
           <input
             type="password"
             name="password_confirm"
             value="<%=user.getPassword()%>"
+            onkeyup="checkPassword()"
           />
           <label name="כתובת דואר">כתובת דואר</label>
           <input type="text" name="email" value="<%=user.getEmail()%>" />
@@ -53,6 +54,7 @@ pageEncoding="UTF-8"%>
             type="text"
             name="email_confirm"
             value="<%=user.getEmail()%>"
+            onkeyup="checkEmail()"
           />
           <label name="סוג תחרות">סוג תחרות</label>
           <select name="compType">
@@ -61,11 +63,11 @@ pageEncoding="UTF-8"%>
             <option value="FLL">FLL</option>
           </select>
           <label name="מספר קבוצה">מספר קבוצה</label>
-          <input type="text" name="teamNumber" value="<%=user.getTeamNumber()%>" />
+          <input type="text" name="teamNumber" value="<%=user.getTeamNumber()%>" onkeyup="checkTeamNumber()"/>
           <label name="מדינה">מדינה</label>
           <%@include file="countries.jsp" %>
           <label name="תפקיד בקבוצה">תפקיד בקבוצה</label>
-          <input type="text" name="teamJob" value="<%=user.getTeamJob()%>" />
+          <input type="text" name="teamJob" value="<%=user.getTeamJob()%>" onkeyup="checkTeamJob()"/>
           <label name="תאריך הצטרפות לקבוצה">תאריך הצטרפות לקבוצה</label>
           <input
             type="date"

@@ -143,9 +143,11 @@ public class JSPUtils {
 				response.sendRedirect("forumBase.jsp");
 			} else {
 				response.sendRedirect("signIn.jsp");
+				request.getSession().setAttribute("currentUserEmail", "none");
 			}
 		} else {
 			response.sendRedirect("signIn.jsp");
+			request.getSession().setAttribute("currentUserEmail", "none");
 		}
 	}
 
