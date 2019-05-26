@@ -128,7 +128,7 @@ public class JSPUtils {
 		DatabaseManager.get().getPostDatabase().create(post);
 	}
 
-	public static void signIn(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public static boolean signIn(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.getSession().setMaxInactiveInterval(36000000);
 		if (DatabaseManager.get().getUserDatabase()
 				.getUserByUsername((String) request.getParameter("username")) != null) {
@@ -141,14 +141,10 @@ public class JSPUtils {
 				DatabaseManager.get().getUserDatabase().updateField("last_seen", "email",
 						(String) request.getSession().getAttribute("currentUserEmail"), "1970-1-1 00:00:00");
 				response.sendRedirect("forumBase.jsp");
-			} else {
-				response.sendRedirect("signIn.jsp");
-				request.getSession().setAttribute("currentUserEmail", "none");
+				return true;
 			}
-		} else {
-			response.sendRedirect("signIn.jsp");
-			request.getSession().setAttribute("currentUserEmail", "none");
 		}
+		return false;
 	}
 
 	public static boolean requiresLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {

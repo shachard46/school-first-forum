@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	boolean error = false;
+	if (request.getMethod().equals("POST")) {
+		if(JSPUtils.signIn(request, response)){
+			return;
+		}else{
+			error = true;
+		}
+	}
+%>
 
 <html dir="rtl">
 <head>
@@ -14,25 +24,22 @@
 		<div class="s_r_container">
 			<form action="signIn.jsp" method="post">
 				<%
-					if (Utils.isEmptyOrNull((String) session.getAttribute("currentUserEmail"))) {
+					if (!error) {
 				%>
 				<label> שם משתמש</label> <input type='text' name='username'
 					placeholder='הכנס שם משתמש' /> <label>סיסמה</label> <input
 					type='password' name='password' placeholder='הכנס סיסמה' />
 
 				<%
-					} else if (session.getAttribute("currentUserEmail").equals("none")) {
+					} else {
 				%>
 				<label> שם משתמש - שם משתמש או סיסמא שגויים</label> <input
 					type='text' class='wrong' name='username'
 					placeholder='הכנס שם משתמש' /> <label>סיסמה - שם משתמש או
 					סיסמא שגויים</label> <input type='password' class='wrong' name='password'
 					placeholder='הכנס סיסמה' />
-				<%
-					} else {
-						response.sendRedirect("forumBase.jsp");
-						return;
-					}
+				<% 
+					}	
 				%>
 				<input type="submit" value="היכנס" class="button send-button" /> <span
 					class="register_s_i">לא רשום? <a href="register.jsp">הירשם!</a></span>
@@ -42,8 +49,3 @@
 	<%@include file="footer.jsp"%>
 </body>
 </html>
-<%
-	if (request.getMethod().equals("POST")) {
-		JSPUtils.signIn(request, response);
-	}
-%>
