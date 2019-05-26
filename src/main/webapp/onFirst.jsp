@@ -4,7 +4,6 @@
 	if(JSPUtils.logoutUser(request, response) || JSPUtils.requiresLogin(request, response)){
 		return;
 	}
-	JSPUtils.clearPoll(request);
 %>
   <html dir="rtl">
     <head>

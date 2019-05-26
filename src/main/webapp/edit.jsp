@@ -36,11 +36,11 @@ pageEncoding="UTF-8"%>
           onsubmit="return checkAll();"
           method="post"
         >
-          <label name=" שם משתמש"> שם משתמש</label>
+          <label name="שם משתמש"> שם משתמש</label>
           <input type="text" name="username" value="<%=user.getUsername()%>" onkeyup="checkUsername()"/>
           <label name="סיסמה">סיסמה</label>
           <input type="password" name="password" value="<%=user.getPassword()%>" onkeyup="checkPassword()"/>
-          <label name=" אשר סיסמה"> אשר סיסמה</label>
+          <label name="אשר סיסמה"> אשר סיסמה</label>
           <input
             type="password"
             name="password_confirm"
@@ -48,7 +48,8 @@ pageEncoding="UTF-8"%>
             onkeyup="checkPassword()"
           />
           <label name="כתובת דואר">כתובת דואר</label>
-          <input type="text" name="email" value="<%=user.getEmail()%>" />
+          <input type="text" name="email" value="<%=user.getEmail()%>" onkeyup="checkEmail()"
+/>
           <label name="אשר כתובת דואר">אשר כתובת דואר</label>
           <input
             type="text"

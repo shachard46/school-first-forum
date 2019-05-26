@@ -169,18 +169,20 @@ var rightAnswersForQuestions = {
 };
 
 function checkQuiz() {
+  var right = 0;
+  var ansNum = (document.quiz.elements.length - 1) / 4;
   for (i = 0; i < document.quiz.elements.length; i++) {
     var quizElement = document.quiz.elements[i];
     var questionID = quizElement.name;
     var ansID = quizElement.value;
     var img = document.createElement("img");
     img.className = "quiz";
-
     if (questionID && questionID.startsWith("q_")) {
       if (quizElement.checked) {
         var span = document.getElementById(questionID + "_" + ansID);
         if (span && rightAnswersForQuestions[questionID[2]] == ansID) {
           img.src = "img/check-image.png";
+          right++;
         } else {
           img.src = "img/wrong.png";
         }
@@ -191,6 +193,13 @@ function checkQuiz() {
       quizElement.value = "נסה שוב";
       document.quiz.onsubmit = true;
     }
+  }
+  if (right === ansNum) {
+    alert("You answered all the questions right!");
+  } else {
+    alert(
+      "You answered " + (right / ansNum) * 100 + "% of the questions right!"
+    );
   }
   return false;
 }

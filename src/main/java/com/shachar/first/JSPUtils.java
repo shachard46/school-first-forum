@@ -66,8 +66,8 @@ public class JSPUtils {
 					Utils.formatDatabaseDate(user.getLastSeen()));
 			request.getSession().setAttribute("currentUserEmail", user.getEmail());
 			request.getSession().setAttribute("poll_results", "false");
-	    	response.sendRedirect("forumBase.jsp");
-	    	return true;
+			response.sendRedirect("forumBase.jsp");
+			return true;
 		}
 		return false;
 	}
