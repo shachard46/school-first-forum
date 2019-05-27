@@ -130,17 +130,17 @@ function checkAll() {
     checkText("teamJob")
   );
 }
-function checkPollQuestion(id) {
+function checkQuestion(id) {
   var valid = 0;
   for (var i = 0; i < 4; i++) {
     valid += document.getElementsByName(id)[i].checked;
   }
-  return valid == 1 ? true : false;
+  return valid == 1;
 }
 function checkAllPoll() {
   var valid = 1;
   for (var i = 5; i < 14; i++) {
-    valid *= checkPollQuestion(i);
+    valid *= checkQuestion(i);
     console.log(valid);
   }
   if (valid == 0) {
@@ -169,6 +169,12 @@ var rightAnswersForQuestions = {
 };
 
 function checkQuiz() {
+  for (i = 2; i < (document.quiz.elements.length - 1) / 4 + 2; i++) {
+    if (!checkQuestion("q_" + i)) {
+      alert("fill all quiz!");
+      return false;
+    }
+  }
   var right = 0;
   var ansNum = (document.quiz.elements.length - 1) / 4;
   for (i = 0; i < document.quiz.elements.length; i++) {
@@ -195,11 +201,16 @@ function checkQuiz() {
     }
   }
   if (right === ansNum) {
-    alert("You answered all the questions right!");
+    document.getElementsByClassName("score")[0].style.cssText =
+      "visibility: visible";
+    document.getElementById("score").innerText =
+      "ענית נכון על כל השאלות! כל הכבוד!";
   } else {
-    alert(
-      "You answered " + (right / ansNum) * 100 + "% of the questions right!"
-    );
+    document.getElementsByClassName("score")[0].style.cssText =
+      "visibility: visible";
+
+    document.getElementById("score").innerText =
+      "ענית על  " + (right / ansNum) * 100 + "% מהשאלות נכון!";
   }
   return false;
 }

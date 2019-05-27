@@ -3,15 +3,15 @@
 pageEncoding="UTF-8"%>
 <%@ page import="com.shachar.first.*"%>
 <%@ page import="java.util.*"%>
-<%@include file="dbMembers.jsp"%>
 <%
-	JSPUtils.requiresLogin(request, response);
+	if(JSPUtils.logoutUser(request, response) || JSPUtils.requiresLogin(request, response)){
+		return;
+  	}
 	if(request.getMethod().equals("POST")){
 		JSPUtils.editUser(request);
 		response.sendRedirect("users.jsp");
 	}
 %>
-<%if(curUser != null){%>
 <!DOCTYPE html>
 <%
 	User user = DatabaseManager.get().getUserDatabase().getUserByUsername(request.getParameter("username"));
@@ -83,7 +83,3 @@ pageEncoding="UTF-8"%>
     <%@include file="footer.jsp"%>
   </body>
 </html>
-<%}else{
-	response.sendRedirect("signIn.jsp");
-}
-%>

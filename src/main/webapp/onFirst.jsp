@@ -17,7 +17,6 @@
     <table class="container">
       <tr>
         <td>
-          <meta charset="utf-8" />
           מה זה?
         </td>
       </tr>
@@ -34,7 +33,7 @@
         <td><img src="img/FIRSTWordMark_Black.gif" /></td>
       </tr>
       <tr>
-        <td>
+        <td colspan="2">
           העונה
         </td>
       </tr>
@@ -61,7 +60,7 @@
         <td><img style="height: 230px !important;" src="img/grimlock.png"/></td>
       </tr>
       <tr>
-        <td>
+        <td colspan="2">
           First בישראל
         </td>
       </tr>
@@ -79,7 +78,7 @@
         <td><img src="img/firstIsrael.png"/></td>
       </tr>
       <tr>
-        <td>
+        <td colspan="2">
           Power Up
         </td>
       </tr>
@@ -98,7 +97,7 @@
         <td><img src="img/powerUp.png"/></td>
       </tr>
       <tr>
-        <td>
+		<td colspan="2">
           מנצחים
         </td>
       </tr>
@@ -115,7 +114,7 @@
         <td><img src="img/winners.png"/></td>
       </tr>
       <tr>
-        <td>
+		<td colspan="2">
           הישגים
         </td>
       </tr>
@@ -142,6 +141,6 @@
 
         <td><img id="trophy" src="img/trophy.png"/></td>
       </tr>
-    </tables>
+    </table>
   </body>
 </html>

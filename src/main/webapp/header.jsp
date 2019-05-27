@@ -4,11 +4,10 @@
 <!DOCTYPE html>
 
 <div class="menuBar">
-<script type="text/javascript" src="functions.js"></script>
+	<script type="text/javascript" src="functions.js"></script>
 	<%
 		String email = (String) request.getSession().getAttribute("currentUserEmail");
-		if (JSPUtils.getCurrentUser(session) != null
-				&& !JSPUtils.getCurrentUser(session).getIsAdmin()) {
+		if (JSPUtils.getCurrentUser(session) != null && !JSPUtils.getCurrentUser(session).getIsAdmin()) {
 	%>
 	<a href='oneUser.jsp?email=<%=email%>' class='menuBarOption user_link'></a>
 	<div class='menuBarOption sign_up_in'>
@@ -20,8 +19,7 @@
 	<%
 		}
 
-		else if (JSPUtils.getCurrentUser(session) != null
-				&& JSPUtils.getCurrentUser(session).getIsAdmin()) {
+		else if (JSPUtils.getCurrentUser(session) != null && JSPUtils.getCurrentUser(session).getIsAdmin()) {
 	%>
 
 	<a href='oneUser.jsp?email=<%=email%>'><div
@@ -59,11 +57,24 @@
 	<div class="menuBarOption users_option">
 		<a href="users.jsp">משתמשים</a>
 	</div>
-
+	<%
+		if (JSPUtils.getCurrentUser(session) != null) {
+	%>
 	<div class="first-logo">
 		<div class="menuBarOption">
 			<a onclick="openFirstPage()"><img
 				src="img/FIRSTWordMark_Black.gif" class="first-logo-img" /></a>
 		</div>
 	</div>
+	<%
+		} else {
+	%>
+	<div class="first-logo">
+		<div class="menuBarOption">
+			<img src="img/FIRSTWordMark_Black.gif" class="first-logo-img" />
+		</div>
+	</div>
+	<%
+		}
+	%>
 </div>
