@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%
-	String errorMessage = null;
-	if(request.getMethod().equals("POST")){
-    	if(JSPUtils.registerUser(request, response)){
-    		return;
-    	}else{
-    		errorMessage = "אימייל או שם משתמש כבר קיימים במערכת...";
-    	}
+<%@page import="java.util.Date"%> <%@ page language="java"
+contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@page
+import="com.shachar.first.*" %>
+<% String errorMessage = null;
+	if(request.getMethod().equals("POST")){ 
+		if(JSPUtils.registerUser(request, response)){
+			return; 
+		} else {
+			errorMessage = "אימייל או שם משתמש כבר קיימים במערכת..."; 
+		}
 	}
 %>
 <!DOCTYPE html>
@@ -31,8 +31,8 @@ pageEncoding="UTF-8"%>
           action="register.jsp"
           onsubmit="return checkAll();"
           method="post"
-        ><%if(!Utils.isEmptyOrNull(errorMessage)){%>
-          <%= errorMessage %><br>
+        >
+          <%if(!Utils.isEmptyOrNull(errorMessage)){%> <%= errorMessage %><br />
           <%} %>
           <label name="שם משתמש">שם משתמש</label>
           <input
@@ -96,6 +96,7 @@ pageEncoding="UTF-8"%>
             type="date"
             name="rookieTime"
             placeholder="הכנס תאריך הצטרפות לקבוצה"
+            value="<%=Utils.formatDateForRegister(new Date())%>"
           />
           <input type="reset" value="נקה" class="button clear-button" />
           <input

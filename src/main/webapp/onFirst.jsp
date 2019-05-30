@@ -16,8 +16,8 @@
     
     <table class="container">
       <tr>
-        <td>
-          מה זה?
+        <td colspan="2">
+          מה זה FIRST?
         </td>
       </tr>
       <tr>
@@ -34,7 +34,7 @@
       </tr>
       <tr>
         <td colspan="2">
-          העונה
+          על העונה
         </td>
       </tr>
       <tr>
@@ -98,7 +98,7 @@
       </tr>
       <tr>
 		<td colspan="2">
-          מנצחים
+           מנצחים בשנת 2018
         </td>
       </tr>
       <tr>
@@ -115,7 +115,7 @@
       </tr>
       <tr>
 		<td colspan="2">
-          הישגים
+          הישגים ישראליים
         </td>
       </tr>
       <tr>

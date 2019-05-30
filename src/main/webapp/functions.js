@@ -120,7 +120,7 @@ function checkAll() {
   checkSelect("country");
   checkTeamNumber();
   checkTeamJob();
-  return (
+  if (
     checkEmail() &&
     checkPassword() &&
     checkUsername() &&
@@ -128,7 +128,11 @@ function checkAll() {
     checkSelect("country") &&
     checkText("teamNumber") &&
     checkText("teamJob")
-  );
+  ){
+	  alert("נרשמת בהצלחה");
+	  return true;
+  }
+  return false;
 }
 function checkQuestion(id) {
   var valid = 0;
