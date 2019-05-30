@@ -108,7 +108,7 @@
 							<%=user.getTeamJob()%>
 						</div>
 						<div class="small_font">
-							שנת הצטרפות:
+							תאריך הצטרפות:
 							<%=user.getRookieTime()%>
 						</div>
 
