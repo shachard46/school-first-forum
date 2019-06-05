@@ -6,13 +6,14 @@ import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%>
 		return;
 	}
 	Post post =
-	DatabaseManager.get().getPostDatabase().getEntityById(Integer.parseInt(request.getParameter("id"))); User
-	user = DatabaseManager.get().getUserDatabase().getUserByEmail(post.getEmail()); 
+	DatabaseManager.get().getPostDatabase().getEntityById(Integer.parseInt(request.getParameter("id"))); 
+  User user = DatabaseManager.get().getUserDatabase().getUserByEmail(post.getEmail()); 
 %>
 <html dir="rtl">
   <head>
     <title>FirstForum</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="functions.js"></script>
   </head>
 
   <body class="forum">
@@ -32,6 +33,7 @@ import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%>
               <div class="date" dir="ltr">
                 <%=formatDate(post.getPostDate())%>
               </div>
+              <%  if(user != null){%>
               <div class="big_font">
                 <a href="oneUser.jsp"><%=user.getUsername()%></a>
               </div>
@@ -41,6 +43,11 @@ import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%>
               <div class="small_font">
                 <%=user.getTeamJob()%>
               </div>
+              <%} else { %>
+              <div class="big_font">
+                המשתמש לא קיים
+              </div>
+              <% }%>
             </div>
           </td>
         </tr>
@@ -49,7 +56,12 @@ import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%>
           <td>
             <div class="post_name"><%=post.getPostName()%></div>
             <hr class="hr" />
-            <div class="post"><%=post.getPostText()%></div>
+            <div class="post" id="text">
+              <%=post.getPostText()%>
+              <script>
+                makeBr();
+              </script>
+            </div>
           </td>
         </tr>
       </table>

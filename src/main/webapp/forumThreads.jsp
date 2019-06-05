@@ -67,8 +67,13 @@
 				<tr>
 					<td class="sub_topic"><a
 						href="forumPost.jsp?id=<%=post.getId()%>"><%=post.getPostName()%></a></td>
-					<td class="last_post"><a
-						href="oneUser.jsp?email=<%=user.getEmail()%>"><%=user.getUsername()%></a></td>
+					<td class="last_post">
+					<%if(user != null){%>
+						<a href="oneUser.jsp?email=<%=user.getEmail()%>"><%=user.getUsername()%></a>
+					<%} else {%>
+						 המשתמש לא קיים או נערך
+					<%}%>		
+					</td>
 					<td class="post_amount">לפני <%=getPeriod(post.getPostDate())%></td>
 				</tr>
 				<%
