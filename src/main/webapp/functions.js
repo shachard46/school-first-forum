@@ -128,9 +128,9 @@ function checkAll() {
     checkSelect("country") &&
     checkText("teamNumber") &&
     checkText("teamJob")
-  ){
-	  alert("נרשמת בהצלחה");
-	  return true;
+  ) {
+    alert("נרשמת בהצלחה");
+    return true;
   }
   return false;
 }
@@ -164,6 +164,13 @@ function openFirstPage() {
   );
   window.location.href = "onFirst.jsp";
 }
+
+function createTdWithId(id) {
+  var td = document.createElement("td");
+  td.id = id;
+  return td;
+}
+
 var rightAnswersForQuestions = {
   2: 3,
   3: 1,
@@ -204,17 +211,30 @@ function checkQuiz() {
       document.quiz.onsubmit = true;
     }
   }
+  document.getElementsByClassName("score")[0].style.cssText =
+    "visibility: visible; width: unset";
+  document
+    .getElementsByClassName("score")[0]
+    .appendChild(createTdWithId("score"));
   if (right === ansNum) {
-    document.getElementsByClassName("score")[0].style.cssText =
-      "visibility: visible";
     document.getElementById("score").innerText =
       "ענית נכון על כל השאלות! כל הכבוד!";
   } else {
-    document.getElementsByClassName("score")[0].style.cssText =
-      "visibility: visible";
-
     document.getElementById("score").innerText =
       "ענית על  " + (right / ansNum) * 100 + "% מהשאלות נכון!";
   }
   return false;
+}
+
+function makeBr() {
+  var text = document.getElementById("text").innerHTML;
+  var newText = "";
+  for (var i in text) {
+    if (text[i] == "\n" && i != 0) {
+      newText += "<br>";
+    } else {
+      newText += text[i];
+    }
+  }
+  document.getElementById("text").innerHTML = newText;
 }
