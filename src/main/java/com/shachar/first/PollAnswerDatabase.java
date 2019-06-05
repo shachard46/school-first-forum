@@ -59,4 +59,10 @@ public class PollAnswerDatabase extends AbstractEntityDatabase<PollAnswer>{
 		return entities;
 	}
 
+	@Override
+	protected String updateEntityRowSQL(User entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

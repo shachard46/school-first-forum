@@ -44,14 +44,15 @@ public class JSPUtils {
 	}
 
 	public static void editUser(HttpServletRequest request) {
-		User user = new User(request.getParameter("username"), request.getParameter("password"),
+		User user = new User(request.getParameter("old"), request.getParameter("password"),
 				request.getParameter("email"), request.getParameter("compType"), request.getParameter("teamNumber"),
 				request.getParameter("country"), request.getParameter("teamJob"), request.getParameter("rookieTime"),
 				false);
-		DatabaseManager.get().getUserDatabase().deleteEntity("username", request.getParameter("old"));
-		DatabaseManager.get().getUserDatabase().create(user);
+		DatabaseManager.get().getUserDatabase().updateEntity(user);
 		DatabaseManager.get().getUserDatabase().updateField("last_seen", "email", user.getEmail(),
 				Utils.formatDatabaseDate(user.getLastSeen()));
+		DatabaseManager.get().getUserDatabase().updateField("username", "email", user.getEmail(),
+				request.getParameter("username"));
 	}
 
 	public static boolean registerUser(HttpServletRequest request, HttpServletResponse response) throws IOException {

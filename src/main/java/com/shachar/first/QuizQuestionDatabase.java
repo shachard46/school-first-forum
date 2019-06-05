@@ -35,4 +35,10 @@ public class QuizQuestionDatabase extends AbstractEntityDatabase<QuizQuestion> {
     public QuizQuestion getQuizQuestionByName(String name) {
         return getSingleEntityByQuery(String.format("select * from quiz_questions where name='%s'", name));
     }
+
+	@Override
+	protected String updateEntityRowSQL(User entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -42,4 +42,10 @@ public class PostDatabase extends AbstractEntityDatabase<Post> {
 	public List<Post> getUserPostsByEmail(String email){
 		return getEntitiesByQuery(String.format("select * from posts where email = '%s'", email));
 	}
+
+	@Override
+	protected String updateEntityRowSQL(User entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -34,4 +34,10 @@ public class PollQuestionDatabase extends AbstractEntityDatabase<PollQuestion> {
 	public PollQuestion getPollQuestionByName(String name) {
 		return getSingleEntityByQuery(String.format("select * from poll_questions where name='%s'", name));
 	}
+
+	@Override
+	protected String updateEntityRowSQL(User entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -88,6 +88,25 @@ public abstract class AbstractEntityDatabase<EntityType> {
 		}
 	}
 
+	public void updateEntity(User entity) {
+		Connection connection = getConnection();
+		Statement st = null;
+		try {
+			st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			String sql = updateEntityRowSQL(entity);
+			st.executeUpdate(sql);
+		} catch (Exception e) {
+			throw new RuntimeException("Could not create statement", e);
+		} finally {
+			if (st != null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+
 	public void clearTable() {
 		Connection connection = getConnection();
 		Statement st = null;
@@ -122,6 +141,8 @@ public abstract class AbstractEntityDatabase<EntityType> {
 	abstract protected EntityType getDBEntity(EntityType entity);
 
 	abstract protected String insertEntitySQL(EntityType entity);
+
+	abstract protected String updateEntityRowSQL(User entity);
 
 	abstract protected EntityType entityFromResultSet(ResultSet rs) throws SQLException;
 

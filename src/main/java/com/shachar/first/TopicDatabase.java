@@ -43,4 +43,10 @@ public class TopicDatabase extends AbstractEntityDatabase<Topic> {
 		return getSingleEntityByQuery(String.format("Select * from topics where name='%s'", name));
 	}
 
+	@Override
+	protected String updateEntityRowSQL(User entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
