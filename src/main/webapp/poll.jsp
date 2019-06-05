@@ -1,4 +1,4 @@
-
+	
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="static com.shachar.first.Utils.*"%>
@@ -20,8 +20,8 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<script type="text/javascript" src="functions.js"></script>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+    <title>FirstForum</title>
 </head>
 <body>
 	<%@include file="header.jsp"%>

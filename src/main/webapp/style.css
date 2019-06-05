@@ -215,6 +215,7 @@ div.big_font {
 }
 
 div.post_name {
+  margin-top: 10px;
   margin-right: 40px;
   font-size: 1.6em;
   text-align: right;
@@ -276,6 +277,8 @@ input.wrong {
 
 .score {
   font-weight: bold;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
 }
 

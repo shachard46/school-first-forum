@@ -59,7 +59,7 @@
 					<td class="header med_td">תחרות</td>
 					<td class="header med_td">קבוצה</td>
 					<td class="header big_td">תפקיד בקבוצה</td>
-					<td class="header med_td">שנת הצטרפות</td>
+					<td class="header med_td">תאריך הצטרפות</td>
 				</tr>
 				<%
 					for (User user : users) {
@@ -85,7 +85,7 @@
 					<td class="header med_td">תחרות</td>
 					<td class="header med_td">קבוצה</td>
 					<td class="header big_td">תפקיד בקבוצה</td>
-					<td class="header med_td">שנת הצטרפות</td>
+					<td class="header med_td">תאריך הצטרפות</td>
 					<td class="header med_td">הפוך למנהל</td>
 					<td class="header small_td">מחיקה</td>
 					<td class="header small_td">עריכה</td>

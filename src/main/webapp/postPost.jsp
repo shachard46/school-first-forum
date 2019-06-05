@@ -14,9 +14,9 @@ file="dbMembers.jsp"%>
 <html dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <title>FirstForum</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script type="text/javascript" src="functions.js"></script>
-    <title>Insert title here</title>
   </head>
   <body>
     <%@include file="header.jsp"%>

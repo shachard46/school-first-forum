@@ -10,6 +10,7 @@ pageEncoding="UTF-8"%>
 	if(request.getMethod().equals("POST")){
 		JSPUtils.editUser(request);
 		response.sendRedirect("users.jsp");
+    return;
 	}
 %>
 <!DOCTYPE html>

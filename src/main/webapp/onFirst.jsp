@@ -9,14 +9,14 @@
     <head>
     <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="functions.js"></script>
-        <%@include file="header.jsp"%>
+        <title>FirstForum</title>   
     </head>
     
   <body class="on_first">
-    
+    <%@include file="header.jsp"%>
     <table class="container">
       <tr>
-        <td colspan="2">
+        <td colspan="2" class="header"	>
           מה זה FIRST?
         </td>
       </tr>
@@ -33,7 +33,7 @@
         <td><img src="img/FIRSTWordMark_Black.gif" /></td>
       </tr>
       <tr>
-        <td colspan="2">
+        <td colspan="2" class="header">
           על העונה
         </td>
       </tr>
@@ -60,7 +60,7 @@
         <td><img style="height: 230px !important;" src="img/grimlock.png"/></td>
       </tr>
       <tr>
-        <td colspan="2">
+        <td colspan="2" class="header">
           First בישראל
         </td>
       </tr>
@@ -78,7 +78,7 @@
         <td><img src="img/firstIsrael.png"/></td>
       </tr>
       <tr>
-        <td colspan="2">
+        <td colspan="2" class="header">
           Power Up
         </td>
       </tr>
@@ -97,7 +97,7 @@
         <td><img src="img/powerUp.png"/></td>
       </tr>
       <tr>
-		<td colspan="2">
+		<td colspan="2" class="header">
            מנצחים בשנת 2018
         </td>
       </tr>
@@ -114,7 +114,7 @@
         <td><img src="img/winners.png"/></td>
       </tr>
       <tr>
-		<td colspan="2">
+		<td colspan="2" class="header">
           הישגים ישראליים
         </td>
       </tr>

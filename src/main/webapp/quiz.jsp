@@ -51,7 +51,7 @@ import="static com.shachar.first.Utils.*"%> <%@include file="dbMembers.jsp"%>
       <%
        	}
       %>
-      	<tr><td class="score"><div  id="score"></div></td></tr>
+      	<tr class="score"></tr>
         <tr>
           <td><input type="submit" name="submit" value="שלח" class="post_button" /></td>
         </tr>
