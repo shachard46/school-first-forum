@@ -74,6 +74,8 @@ function checkEmail() {
     document.getElementsByName("אשר כתובת דואר")[0].style.color = "black";
 
     document.getElementsByName("כתובת דואר")[0].innerText = "כתובת דואר";
+    document.getElementsByName("אשר כתובת דואר")[0].innerText =
+      "אשר כתובת דואר";
   }
   return true;
 }
@@ -237,4 +239,9 @@ function makeBr() {
     }
   }
   document.getElementById("text").innerHTML = newText;
+}
+
+function alertIn(text) {
+  location.href = "forumBase.jsp";
+  alert(text);
 }

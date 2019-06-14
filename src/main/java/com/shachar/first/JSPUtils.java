@@ -67,14 +67,13 @@ public class JSPUtils {
 					Utils.formatDatabaseDate(user.getLastSeen()));
 			request.getSession().setAttribute("currentUserEmail", user.getEmail());
 			request.getSession().setAttribute("poll_results", "false");
-			response.sendRedirect("forumBase.jsp");
 			return true;
 		}
 		return false;
 	}
 
 	public static boolean logoutUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		if (request.getParameter("logout") != null) {
+		if (request.getParameter("logout") != null && getCurrentUser(request.getSession()) != null) {
 			User curUser = getCurrentUser(request.getSession());
 			curUser.setLastSeenNow();
 			DatabaseManager.get().getUserDatabase().updateField("last_seen", "email", curUser.getEmail(),
@@ -100,8 +99,7 @@ public class JSPUtils {
 	}
 
 	public static void toggleAdmin(HttpServletRequest request) {
-		User curUser = getCurrentUser(request.getSession());
-		if (curUser.getIsAdmin()) {
+		if (getCurrentUser(request.getSession()).getIsAdmin()) {
 			if (request.getParameter("will_admin") != null) {
 				DatabaseManager.get().getUserDatabase().updateField("is_admin", "email",
 						(String) request.getParameter("email"), Integer.parseInt(request.getParameter("will_admin")));
@@ -112,13 +110,8 @@ public class JSPUtils {
 	}
 
 	public static void clearPoll(HttpServletRequest request) {
-		System.out.println("About to clear poll, isAdmin: " + isCurrentUserAdmin(request.getSession()));
-		System.out.println("request.getQueryString().contains(\"clearPoll\")"
-				+ Utils.isEmptyOrNull(request.getParameter("clearPoll")));
 		if (!Utils.isEmptyOrNull(request.getParameter("clearPoll")) && isCurrentUserAdmin(request.getSession())) {
-			System.out.println("Clearing poll");
 			DatabaseManager.get().getPollAnswerDatabase().clearTable();
-			System.out.println("Clearing poll, done...");
 		}
 	}
 
@@ -141,7 +134,6 @@ public class JSPUtils {
 				request.getSession().setAttribute("poll_results", "false");
 				DatabaseManager.get().getUserDatabase().updateField("last_seen", "email",
 						(String) request.getSession().getAttribute("currentUserEmail"), "1970-1-1 00:00:00");
-				response.sendRedirect("forumBase.jsp");
 				return true;
 			}
 		}

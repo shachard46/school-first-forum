@@ -1,15 +1,7 @@
 <%@page import="java.util.Date"%> <%@ page language="java"
 contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@page
 import="com.shachar.first.*" %>
-<% String errorMessage = null;
-	if(request.getMethod().equals("POST")){ 
-		if(JSPUtils.registerUser(request, response)){
-			return; 
-		} else {
-			errorMessage = "אימייל או שם משתמש כבר קיימים במערכת..."; 
-		}
-	}
-%>
+
 <!DOCTYPE html>
 
 <html dir="rtl">
@@ -18,10 +10,22 @@ import="com.shachar.first.*" %>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script type="text/javascript" src="functions.js"></script>
   </head>
-
+<% String errorMessage = null;
+  if(JSPUtils.getCurrentUser(session) != null){
+		response.sendRedirect("forumBase.jsp");
+		return;
+	}
+	if(request.getMethod().equals("POST")){ 
+		if(JSPUtils.registerUser(request, response)){
+      %><script>alertIn("נרשמת בהצלחה!")</script><%
+			return; 
+		} else {
+			errorMessage = "אימייל או שם משתמש כבר קיימים במערכת..."; 
+		}
+	}
+%>
   <body>
     <%@include file="header.jsp"%>
-
     <div class="s_r_root">
       <div class="first-logo"></div>
       <!-- <h3>הרשמה</h3> -->

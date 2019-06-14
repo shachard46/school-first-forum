@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@include file="dbMembers.jsp"%>
 <%@page import="static com.shachar.first.Utils.*"%>
 <%
 	if(JSPUtils.logoutUser(request, response) || JSPUtils.requiresLogin(request, response)){
@@ -77,7 +76,7 @@
 					<div class="panel_header header">
 						מידע נוסף
 						<%
-						if ((curUser.getIsAdmin() || user.getUsername().equals(curUser.getUsername()))
+						if ((JSPUtils.getCurrentUser(session).getIsAdmin() || user.getUsername().equals(JSPUtils.getCurrentUser(session).getUsername()))
 									&& !user.getUsername().equals("admin")) {
 					%>
 						<a href="edit.jsp?username=<%=user.getUsername()%>"

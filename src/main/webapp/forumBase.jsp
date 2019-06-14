@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.shachar.first.*"%>
 <%@ page import="java.util.List"%>
-<%@include file="dbMembers.jsp"%>
 
 <%
 	if(JSPUtils.logoutUser(request, response)){

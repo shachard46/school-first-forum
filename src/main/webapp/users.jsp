@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.shachar.first.*"%>
 <%@ page import="java.util.*"%>
-<%@include file="dbMembers.jsp"%>
 <%	
 	if(JSPUtils.logoutUser(request, response) || JSPUtils.requiresLogin(request, response)){
 		return;
@@ -36,22 +35,22 @@
 		<form action="users.jsp" method="get">
 			<table class="container">
 				<tr class="search">
-					<td colspan="<%=curUser.getIsAdmin() ? 7 : 5%>"><input type="text"
+					<td colspan="<%=JSPUtils.getCurrentUser(session).getIsAdmin() ? 7 : 5%>"><input type="text"
 						placeholder="חפש.." name="search" /></td>
-					<td rowspan="2" colspan="<%=curUser.getIsAdmin() ? 2 : 1%>">
+					<td rowspan="2" colspan="<%=JSPUtils.getCurrentUser(session).getIsAdmin() ? 2 : 1%>">
 						<button type="submit">
 							<img src="img/search.PNG" />
 						</button>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="<%=curUser.getIsAdmin() ? 7 : 5%>"><select name="field"><option
+					<td colspan="<%=JSPUtils.getCurrentUser(session).getIsAdmin() ? 7 : 5%>"><select name="field"><option
 								value="username">שם משתמש</option>
 							<option value="compType">סוג תחרות</option>
 							<option value="teamNumber">מספר קבוצה</option></select></td>
 				</tr>
 				<%
-					if (!curUser.getIsAdmin()) {
+					if (!JSPUtils.getCurrentUser(session).getIsAdmin()) {
 				%>
 				<tr>
 					<td class="header big_td">שם משתמש</td>
@@ -116,7 +115,7 @@
 					<td class="small_td"><a href="edit.jsp?username=<%=user.getUsername()%>">ערוך</a></td>
 
 					<%
-						} else if (!user.getUsername().equals("admin") || !user.getUsername().equals(curUser.getUsername())) {
+						} else if (!user.getUsername().equals("admin") || !user.getUsername().equals(JSPUtils.getCurrentUser(session).getUsername())) {
 					%>
 
 					<td class="med_td"><a

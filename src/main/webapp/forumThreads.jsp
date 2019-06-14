@@ -3,7 +3,6 @@
 <%@ page import="com.shachar.first.*"%>
 <%@ page import="static com.shachar.first.Utils.*"%>
 <%@ page import="java.util.List"%>
-<%@include file="dbMembers.jsp"%>
 
 <%
 	if(JSPUtils.logoutUser(request, response)){

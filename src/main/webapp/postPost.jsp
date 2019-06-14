@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ page import="com.shachar.first.*"%> <%@include
-file="dbMembers.jsp"%>
+pageEncoding="UTF-8"%> <%@ page import="com.shachar.first.*"%> 
 <%
 	if(JSPUtils.logoutUser(request, response) || JSPUtils.requiresLogin(request, response)){
 		return;
