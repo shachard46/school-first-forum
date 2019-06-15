@@ -212,7 +212,7 @@ public abstract class AbstractEntityDatabase<EntityType> {
 		if (con == null) {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/db2", "root", "");
+				con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/db", "root", "");
 			} catch (Exception e) {
 				throw new RuntimeException("Could not create connection", e);
 			}
